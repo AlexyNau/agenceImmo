@@ -69,7 +69,7 @@ $location.path("modifierProprio");
 						$scope.indice = true;
 					} else {
 						$scope.indice = false;
-						$scope.msg = "Le propriétaire n'existe pas ou l'id est faux";
+						$scope.msg = "Le proprietaire n'existe pas ou l'id est faux";
 					}
 				});
 

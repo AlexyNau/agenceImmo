@@ -83,9 +83,9 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 	public void deleteProprio(int id) {
 		// Récupération de la session
 		s = sf.getCurrentSession();
-		// Récupération du pays correspondant à id de la BD
+		// Récupération du proprio correspondant à id de la BD
 		Proprietaire p_out = (Proprietaire) s.get(Proprietaire.class, id);
-		// Suppession du pays avec la methode delete
+		// Suppression du proprio avec la methode delete
 		s.delete(p_out);
 	}
 
