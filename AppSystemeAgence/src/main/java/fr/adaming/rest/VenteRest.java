@@ -21,7 +21,6 @@ public class VenteRest {
 	private IVenteService venteService;
 	
 	
-	//
 	@Autowired
 	private IClasseStdService classeService;
 	

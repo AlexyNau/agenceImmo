@@ -43,5 +43,10 @@ public class ClientRest {
 	public void deleteClient(@PathVariable("pId") int id) {
 		clientService.deleteClient(id);
 	}
+	
+	@RequestMapping(value = "/logClient/{pMail}/{pMdp}", method = RequestMethod.GET, produces = "application/json")
+	public Client logClient(@PathVariable("pMail") String mail,@PathVariable("pMdp") String mdp) {
+		return clientService.isExiste(mail, mdp);
+	}
 
 }

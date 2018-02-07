@@ -45,5 +45,10 @@ public class ClientServiceImpl implements IClientService {
 		clientDao.deleteClient(id);
 
 	}
+	
+	@Override
+	public Client isExiste(String mail, String mdp) {
+		return clientDao.isExiste(mail, mdp);
+	}
 
 }
