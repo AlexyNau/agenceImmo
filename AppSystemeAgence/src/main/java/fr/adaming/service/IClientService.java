@@ -16,4 +16,6 @@ public interface IClientService {
 
 	public void deleteClient(int id);
 	
+	public Client isExiste(String mail,String mdp);
+	
 }

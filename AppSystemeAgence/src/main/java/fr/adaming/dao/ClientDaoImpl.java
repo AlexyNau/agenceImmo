@@ -97,5 +97,16 @@ public class ClientDaoImpl implements IClientDao {
 		// Suppession du Client avec la methode delete
 		s.delete(c_out);
 	}
+	
+	@Override
+	public Client isExiste(String mail, String mdp) {
+		s = sf.getCurrentSession();
+		String req="FROM Client c WHERE c.mail=:pMail and c.mdp=:pMdp";
+		Query query = s.createQuery(req);
+		query.setParameter("pMail", mail);
+		query.setParameter("pMdp", mdp);
+		
+		return (Client) query.uniqueResult();
+	}
 
 }
