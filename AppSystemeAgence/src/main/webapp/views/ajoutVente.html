@@ -1,21 +1,31 @@
 <!-- Formulaire d'ajout -->
 <form class="form-horizontal">
 
-	<div class="col-sm-4 col-sm-offset-4">
-		<select class="form-control" ng-model="venteAjout.proprietaire.id">
-			<option ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
-		</select>
+	<div class="form-group">
+		<label for="idProp" class="col-sm-2 control-label">ID du
+			proprietaire</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idProp"
+				ng-model="venteAjout.proprietaire.id">
+				<option ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
+			</select>
+		</div>
 	</div>
 
-	<div class="col-sm-4 col-sm-offset-4">
-		<select class="form-control" ng-model="venteAjout.classeStd.type_bien">
-			<option value="appartement" id="idAppart" />
-			<option value="studio" id="idStudio" />
-			<option value="maison" id="idMaison" />
-			<option value="entrepôt" id="idEntrepot" />
-			<option value="emplacement" id="idEmplacement" />
-			<option value="terrain" id="idTerrain" />
-		</select>
+	<div class="form-group">
+		<label for="idTypeBien" class="col-sm-2 control-label">Type de
+			bien</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idTypeBien"
+				ng-model="venteAjout.classeStd.type_bien">
+				<option value="appartement" id="idAppart" />
+				<option value="studio" id="idStudio" />
+				<option value="maison" id="idMaison" />
+				<option value="entrepôt" id="idEntrepot" />
+				<option value="emplacement" id="idEmplacement" />
+				<option value="terrain" id="idTerrain" />
+			</select>
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -26,12 +36,11 @@
 				placeholder="Numero de rue" ng-model="venteAjout.adresse.numero">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="idRue" class="col-sm-2 control-label">Rue :</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="idRue"
-				placeholder="Rue"
+			<input type="text" class="form-control" id="idRue" placeholder="Rue"
 				ng-model="venteAjout.adresse.rue">
 		</div>
 	</div>
@@ -39,57 +48,80 @@
 		<label for="idVille" class="col-sm-2 control-label">Ville :</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="idVille"
-				placeholder="Ville"
-				ng-model="venteAjout.adresse.ville">
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label for="idPays" class="col-sm-2 control-label">Pays :</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="idPays"
-				placeholder="Pays"
-				ng-model="venteAjout.adresse.pays">
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label for="idDatePubli" class="col-sm-2 control-label">Date de publication :</label>
-		<div class="col-sm-10">
-			<input type="date" class="form-control" id="idDatePubli"
-				placeholder="Date de soumission du bien" ng-model="venteAjout.datePublication">
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label for="idDateDispo" class="col-sm-2 control-label">Date de disponibilité :</label>
-		<div class="col-sm-10">
-			<input type="date" class="form-control" id="idDateDispo"
-				placeholder="Date de disponibilite du bien" ng-model="venteAjout.dateDisponibilite">
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label for="idRemise" class="col-sm-2 control-label">Remise</label>
-		<div class="col-sm-10">
-			<input type="number" class="form-control" id="idRemise"
-				placeholder="Remise effectuée sur le bien" ng-model="venteAjout.remise">
+				placeholder="Ville" ng-model="venteAjout.adresse.ville">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="idCadast" class="col-sm-2 control-label">Numero de
-			Telephone Professionnel</label>
+		<label for="idPays" class="col-sm-2 control-label">Pays :</label>
 		<div class="col-sm-10">
-			<input type="tel" class="form-control" id="idTelt"
-				placeholder="Numero professionnel"
-				ng-model="proprioAjout.numTelTravail">
+			<input type="text" class="form-control" id="idPays"
+				placeholder="Pays" ng-model="venteAjout.adresse.pays">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idDatePubli" class="col-sm-2 control-label">Date
+			de publication :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDatePubli"
+				placeholder="Date de soumission du bien"
+				ng-model="venteAjout.datePublication">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idDateDispo" class="col-sm-2 control-label">Date
+			de disponibilité :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDateDispo"
+				placeholder="Date de disponibilite du bien"
+				ng-model="venteAjout.dateDisponibilite">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idRemise" class="col-sm-2 control-label">Remise</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idRemise"
+				placeholder="Remise effectuée sur le bien"
+				ng-model="venteAjout.remise">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idEtat" class="col-sm-2 control-label">Etat du
+			bien</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idEtat" ng-model="venteAjout.etat">
+				<option value="a restaurer" id="idRestauration" />
+				<option value="correct" id="idCorrect" />
+				<option value="impeccable" id="idImpecc" />
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idPrix" class="col-sm-2 control-label">Prix d'achat</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idPrix"
+				placeholder="Prix d'achat"
+				ng-model="venteAjout.prixAchat">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idSuperficie" class="col-sm-2 control-label">Superficie</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idSuperficie"
+				placeholder="Superficie du bien"
+				ng-model="venteAjout.superficie">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button class="btn btn-default" ng-click="ajouterProprio()">Ajouter</button>
+			<button class="btn btn-default" ng-click="ajouterVente()">Ajouter</button>
 		</div>
 	</div>
 </form>
