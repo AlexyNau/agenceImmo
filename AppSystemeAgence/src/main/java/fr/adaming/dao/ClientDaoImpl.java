@@ -22,6 +22,7 @@ public class ClientDaoImpl implements IClientDao {
 		this.sf = sf;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Client> getAllClient() {
 		// recup la session
@@ -56,35 +57,15 @@ public class ClientDaoImpl implements IClientDao {
 		s.save(c);
 		return c;
 	}
-	
-
 
 	@Override
 	public Client updateClient(Client c) {
 		s = sf.getCurrentSession();
-//		// requete hql
-//		String req = "update Client c set c.adresse.numero=:pAdNum,c.adresse.pays=:pAdPays,c.adresse.rue=:pAdRue,c.adresse.ville=:pAdVille,c.mail=:pMail,c.mdp=:pMdp,c.nom=:pNom,c.telephone=:pTel WHERE c.id=:pID";
-//
-//		Query query = s.createQuery(req);
-//
-//		query.setParameter("pAdNum", c.getAdresse().getNumero());
-//		query.setParameter("pAdPays", c.getAdresse().getPays());
-//		query.setParameter("pAdRue", c.getAdresse().getRue());
-//		query.setParameter("pAdVille", c.getAdresse().getVille());
-//		query.setParameter("pMail", c.getMail());
-//		query.setParameter("pMdp", c.getMdp());
-//		query.setParameter("pNom", c.getNom());
-//		query.setParameter("pTel", c.getTelephone());
-//		query.setParameter("pID", c.getId());
-//
-//		query.executeUpdate();
-//		return c;
 
-				
-				// Mettre a jour le client dans la BDD
-				s.saveOrUpdate(c);
+		// Mettre a jour le client dans la BDD
+		s.saveOrUpdate(c);
 
-				return c;
+		return c;
 
 	}
 
@@ -97,15 +78,15 @@ public class ClientDaoImpl implements IClientDao {
 		// Suppession du Client avec la methode delete
 		s.delete(c_out);
 	}
-	
+
 	@Override
 	public Client isExiste(String mail, String mdp) {
 		s = sf.getCurrentSession();
-		String req="FROM Client c WHERE c.mail=:pMail and c.mdp=:pMdp";
+		String req = "FROM Client c WHERE c.mail=:pMail and c.mdp=:pMdp";
 		Query query = s.createQuery(req);
 		query.setParameter("pMail", mail);
 		query.setParameter("pMdp", mdp);
-		
+
 		return (Client) query.uniqueResult();
 	}
 
