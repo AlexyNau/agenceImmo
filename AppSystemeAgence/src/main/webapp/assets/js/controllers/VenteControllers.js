@@ -1,0 +1,3 @@
+monApp.controller("addVente", function() {
+	
+})
