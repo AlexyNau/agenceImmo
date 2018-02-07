@@ -1,58 +1,95 @@
 <!-- Formulaire d'ajout -->
 <form class="form-horizontal">
- <div class="form-group">
-    <label for="typeBien" class="col-sm-2 control-label">Type de bien</label>
-    <div class="col-sm-10">
-      <input type="number" cluform-control" id="idNum" placeholder="Numero adresse proprietaire" ng-model="proprioAjout.adresse.numero">
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-   <div class="form-group">
-    <label for="idPays" class="col-sm-2 control-label">Pays Adresse</label>
-    <div class="col-sm-10">
-      <input type="text" cluform-control" id="idPays" placeholder="Pays adresse proprietaire" ng-model="proprioAjout.adresse.pays">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="idRue" class="col-sm-2 control-label">Rue Adresse</label>
-    <div class="col-sm-10">
-      <input type="text" cluform-control" id="idRue" placeholder="Rue adresse proprietaire" ng-model="proprioAjout.adresse.rue">
-    </div>
-  </div>
-     <div class="form-group">
-    <label for="idVille" class="col-sm-2 control-label">Ville Adresse</label>
-    <div class="col-sm-10">
-      <input type="text" cluform-control" id="idVille" placeholder="Ville adresse proprietaire" ng-model="proprioAjout.adresse.ville">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="idNom" class="col-sm-2 control-label">Nom</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="idNom" placeholder="Nom du Proprietaire" ng-model="proprioAjout.nom">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="idTelp" class="col-sm-2 control-label">Numero de Telephone Privee</label>
-    <div class="col-sm-10">
-      <input type="tel" class="form-control" id="idTelp" placeholder="Numero privee" ng-model="proprioAjout.numTelPrive">
-    </div>
-  </div>
-  
-    <div class="form-group">
-    <label for="idTelt" class="col-sm-2 control-label">Numero de Telephone Professionnel</label>
-    <div class="col-sm-10">
-      <input type="tel" class="form-control" id="idTelt" placeholder="Numero professionnel" ng-model="proprioAjout.numTelTravail">
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-default" ng-click="ajouterProprio()">Ajouter</button>
-    </div>
-  </div>
+
+	<div class="col-sm-4 col-sm-offset-4">
+		<select class="form-control" ng-model="venteAjout.proprietaire.id">
+			<option ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
+		</select>
+	</div>
+
+	<div class="col-sm-4 col-sm-offset-4">
+		<select class="form-control" ng-model="venteAjout.classeStd.type_bien">
+			<option value="appartement" id="idAppart" />
+			<option value="studio" id="idStudio" />
+			<option value="maison" id="idMaison" />
+			<option value="entrepôt" id="idEntrepot" />
+			<option value="emplacement" id="idEmplacement" />
+			<option value="terrain" id="idTerrain" />
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="idNum" class="col-sm-2 control-label">Numero de
+			rue :</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idNum"
+				placeholder="Numero de rue" ng-model="venteAjout.adresse.numero">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idRue" class="col-sm-2 control-label">Rue :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idRue"
+				placeholder="Rue"
+				ng-model="venteAjout.adresse.rue">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idVille" class="col-sm-2 control-label">Ville :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idVille"
+				placeholder="Ville"
+				ng-model="venteAjout.adresse.ville">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idPays" class="col-sm-2 control-label">Pays :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idPays"
+				placeholder="Pays"
+				ng-model="venteAjout.adresse.pays">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idDatePubli" class="col-sm-2 control-label">Date de publication :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDatePubli"
+				placeholder="Date de soumission du bien" ng-model="venteAjout.datePublication">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idDateDispo" class="col-sm-2 control-label">Date de disponibilité :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDateDispo"
+				placeholder="Date de disponibilite du bien" ng-model="venteAjout.dateDisponibilite">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idRemise" class="col-sm-2 control-label">Remise</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idRemise"
+				placeholder="Remise effectuée sur le bien" ng-model="venteAjout.remise">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idCadast" class="col-sm-2 control-label">Numero de
+			Telephone Professionnel</label>
+		<div class="col-sm-10">
+			<input type="tel" class="form-control" id="idTelt"
+				placeholder="Numero professionnel"
+				ng-model="proprioAjout.numTelTravail">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="ajouterProprio()">Ajouter</button>
+		</div>
+	</div>
 </form>

@@ -38,6 +38,10 @@ public class VenteServiceImpl implements IVenteService {
 
 	@Override
 	public Vente updateVente(Vente vente) {
+		// calculer le revenu cadastral
+		double revenuCadastral = (vente.getPrixAchat() * 12 / 10000) - (vente.getPrixAchat() * 12 / 10000) * 40 / 100;
+		vente.setRevenuCadastral(revenuCadastral);
+		
 		return venteDao.updateVente(vente);
 	}
 
@@ -63,9 +67,16 @@ public class VenteServiceImpl implements IVenteService {
 				classe = element;
 			}
 		}
-		
-		//faire le lien entre la classe std et la vente
+
+		// faire le lien entre la classe std et la vente
 		vente.setClasseStd(classe);
+
+		// initialiser par défaut le statut à disponible
+		vente.setStatut("disponible");
+
+		// calculer le revenu cadastral
+		double revenuCadastral = (vente.getPrixAchat() * 12 / 10000) - (vente.getPrixAchat() * 12 / 10000) * 40 / 100;
+		vente.setRevenuCadastral(revenuCadastral);
 
 		return venteDao.addVente(vente);
 	}

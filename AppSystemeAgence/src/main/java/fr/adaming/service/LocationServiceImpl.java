@@ -38,6 +38,9 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 
 	@Override
 	public Location updateLocation(Location loc) {
+		// calculer le revenu cadastral
+		double revenuCadastral = loc.getLoyer() * 12 - (loc.getLoyer() * 12 * 40 / 100);
+		loc.setRevenuCadastral(revenuCadastral);
 		return locDao.updateLocation(loc);
 	}
 
@@ -57,7 +60,7 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 
 		// récupération de la classe correspondant au bien
 		ClasseStd classe = new ClasseStd();
-		
+
 		double loyerTotal = loc.getLoyer() + loc.getCharges();
 
 		for (ClasseStd element : listIn) {
@@ -65,11 +68,17 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 				classe = element;
 			}
 		}
-		
-		//faire le lien entre la classe std et la location
+
+		// faire le lien entre la classe std et la location
 		loc.setClasseStd(classe);
-		
-		
+
+		// initialiser par défaut le statut à disponible
+		loc.setStatut("disponible");
+
+		// calculer le revenu cadastral
+		double revenuCadastral = loc.getLoyer() * 12 - (loc.getLoyer() * 12 * 40 / 100);
+		loc.setRevenuCadastral(revenuCadastral);
+
 		return locDao.addLocation(loc);
 	}
 
