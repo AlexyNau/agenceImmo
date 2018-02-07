@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Espace Conseiller</title>
+
+<!-- ajout de la lib jquery -->
+
+<script type="text/javascript"
+	src="assets/resources/bootstrap/jquery-3.2.1.js"></script>
+
+<!-- ajout des libs de bootstrap -->
+<link rel="stylesheet" href="assets/resources/bootstrap/bootstrap.css">
+<script type="text/javascript"
+	src="assets/resources/bootstrap/bootstrap.js"></script>
+
+<!-- ajout lib angular js -->
+<script type="text/javascript" src="assets/resources/angular/angular.js"></script>
+<script type="text/javascript"
+	src="assets/resources/angular/angular-route.js"></script>
+<script type="text/javascript"
+	src="assets/resources/angular/angular-base64-upload.js"></script>
+<script type="text/javascript"
+	src="assets/resources/angular/angular-locale_fr.js"></script>
+<script type="text/javascript"
+	src="assets/resources/angular/angular-cookies.js"></script>
+
+<!-- ajout de mes fichiers -->
+<script type="text/javascript" src="assets/js/module/app.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/conseillerProvider.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/ConseillerControllers.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/HomeControllers.js"></script>
+	
+	<!-- Style CSS pour le header -->
+	<link href="assets/css/styleHeaderConseiller.css" rel="stylesheet"/>
+
+<!-- Script pour l'ajout du template header -->
+<script>
+    $(function () {
+        $("#headnav").load("assets/templates/headerConseiller.html");
+    });
+</script>
+</head>
+<body ng-app="BasicHttpAuthExample">
+
+<!-- Header nav-bar -->
+<div id="headnav" ng-show="!indice" ></div>
+
+
+
+
+
+	<!-- Spécifier l'endroit de l'injection des vues -->
+	<div class="jumbotron">
+		<div class="container">
+			<div class="col-xs-offset-2 col-xs-8">
+				<div ng-view></div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

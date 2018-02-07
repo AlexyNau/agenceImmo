@@ -1,0 +1,21 @@
+<h1 style="color: aqua; text-align: center;">Liste des proprietaires</h1>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Nom</th>
+		<th style="text-align: center;">Numero privee</th>
+		<th style="text-align: center;">Numero professionnel</th>
+		<th style="text-align: center;">Operations</th>
+	</tr>
+
+	<tr ng-repeat="p in listeProprio">
+		<td>{{p.id}}</td>
+		<td>{{p.nom}}</td>
+		<td>{{p.numTelPrive}}</td>
+		<td>{{p.numTelTravail}}</td>
+		<td><button class="btn btn-success" ng-click="supprimerLien(p)" >Supprimer</button> | <button class="btn btn-success" ng-click="modifierLien(p)" >Modifier</button> </td>
+	</tr>
+
+</table>

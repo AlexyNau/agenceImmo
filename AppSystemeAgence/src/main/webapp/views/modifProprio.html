@@ -1,0 +1,65 @@
+<!-- Formulaire de Modif -->
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="id" class="col-sm-2 control-label">ID</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="id"
+				placeholder="ID du Proprietaire" ng-model="proprioUpdate.id">
+		</div>
+	</div>
+	 <div class="form-group">
+    <label for="idNum" class="col-sm-2 control-label">Numero Adresse</label>
+    <div class="col-sm-10">
+      <input type="number" cluform-control" id="idNum" placeholder="Numero adresse proprietaire" ng-model="proprioUpdate.adresse.numero">
+    </div>
+  </div>
+   <div class="form-group">
+    <label for="idPays" class="col-sm-2 control-label">Pays Adresse</label>
+    <div class="col-sm-10">
+      <input type="text" cluform-control" id="idPays" placeholder="Pays adresse proprietaire" ng-model="proprioUpdate.adresse.pays">
+    </div>
+  </div>
+   <div class="form-group">
+    <label for="idRue" class="col-sm-2 control-label">Rue Adresse</label>
+    <div class="col-sm-10">
+      <input type="text" cluform-control" id="idRue" placeholder="Rue adresse proprietaire" ng-model="proprioUpdate.adresse.rue">
+    </div>
+  </div>
+     <div class="form-group">
+    <label for="idVille" class="col-sm-2 control-label">Ville Adresse</label>
+    <div class="col-sm-10">
+      <input type="text" cluform-control" id="idVille" placeholder="Ville adresse proprietaire" ng-model="proprioUpdate.adresse.ville">
+    </div>
+  </div>
+	<div class="form-group">
+		<label for="idNom" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idNom"
+				placeholder="Nom du Proprietaire" ng-model="proprioUpdate.nom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idTelp" class="col-sm-2 control-label">Numero de
+			Telephone Privee</label>
+		<div class="col-sm-10">
+			<input type="tel" class="form-control" id="idTelp"
+				placeholder="Numero privee" ng-model="proprioUpdate.numTelPrive">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idTelt" class="col-sm-2 control-label">Numero de
+			Telephone Professionnel</label>
+		<div class="col-sm-10">
+			<input type="tel" class="form-control" id="idTelt"
+				placeholder="Numero professionnel"
+				ng-model="proprioUpdate.numTelTravail">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="updateProprio()">Modifier</button>
+		</div>
+	</div>
+</form>
