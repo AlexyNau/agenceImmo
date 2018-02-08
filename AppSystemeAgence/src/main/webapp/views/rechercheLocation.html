@@ -2,22 +2,55 @@
 	<div ng-include="'assets/templates/headerUser.html'"></div>
 </div>
 
-Filtrer par le type de bien:
-<input type="text" ng-model="search.classeStd.type_bien">
-<br />
-Filtrer en fonction du loyer(euros):
-<input type="number" ng-model="search.loyer">
-<br />
-Filtrer en fonction de la superficie min desire:
-<input type="number" ng-model="min.sup_min">
-<br />
-Filtrer en fonction de la superficie max:
-<input type="number" ng-model="max.sup_min">
-<br />
-Filtrer meuble ou non:
-<input type="text" ng-model="search.garniture">
-<br />
+<form class="form-horizontal" style="background-color:grey;padding-top: 30px;padding-left: 20px; padding-bottom: 10px;border-radius: 25px;">
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-3 ">Type de bien</label>
+		<div class="col-sm-3 ">
+			<select class="form-control" id="idTypeBien"
+				ng-model="type_bien">
+				<option value="appartement" id="idAppart">Appartement</option>
+				<option value="studio" id="idStudio">Studio</option>
+				<option value="maison" id="idMaison">Maison</option>
+				<option value="entrepot" id="idEntrepot">Entrepot</option>
+				<option value="emplacement" id="idEmplacement">Emplacement</option>
+				<option value="terrain" id="idTerrain">Terrain</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-3 ">Loyer Max (euros):</label>
+		<div class="col-sm-3 ">
+			<input type="number" ng-model="loyer">
+		</div>
+	</div>
+	
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-3 ">Superficie min desire:</label>
+		<div class="col-sm-3 ">
+			<input type="number" ng-model="sup_min">
+		</div>
+	</div>
+	
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-3 ">Superficie max desire:</label>
+		<div class="col-sm-3 ">
+			<input type="number" ng-model="sup_max">
+		</div>
+	</div>
+	
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-3 "> Meuble (cochez si oui):</label>
+		<div class="col-sm-3 ">
+			<input type="checkbox" ng-model="garniture" checked>
+		</div>
+	</div>
+	
+	
+</form>
 
+<br/>
+<br/>
 
 <table class="table table-bordered" style="text-align: center;">
 
@@ -31,14 +64,15 @@ Filtrer meuble ou non:
 		<th style="text-align: center;">Favoris</th>
 
 	</tr>
-
-	<tr ng-repeat="l in listeLocation |filter:search |filter:lowerThan:max">
+	<!-- | filter:search | filter:lowerThan:max -->
+	<tr ng-repeat="l in listeLocation | limitTo:10 | filter:filterRange |filter:search">
 		<td>{{l.id}}</td>
 		<td>{{l.classeStd.type_bien}}</td>
 		<td>{{l.loyer|currency}}</td>
-		<td>{{l.garniture}}</td>
-		<td>{{l.classeStd.sup_min}}</td>
-		<td>{{l.image}}</td>
+		<td><span ng-if="l.garniture">Meuble</span> <span ng-if="!l.garniture">Non Meuble</span></td>
+		<td>{{l.superficie}}</td>
+		<td><img ng-src="data:image/JPEG;base64,{{l.photo}}"
+					style="max-height: 150px; max-width: 150px"></td>
 		<td><button class="btn btn-success" ng-click="favorisLien(l)" >Enregistrer</button></td>
 
 	</tr>
