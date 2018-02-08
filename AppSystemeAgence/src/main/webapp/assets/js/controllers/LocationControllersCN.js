@@ -36,4 +36,30 @@ monApp.controller("addLocationCtrl", function($scope, locationServiceCN,
 			}
 		})
 	}
+}).controller("updateLocationCNCtrl", function($scope, locationServiceCN, $location) {
+	$scope.locationModif = {
+			id:'',
+			adresse : {
+				numero : '',
+				rue : '',
+				ville : '',
+				pays : ''
+		
+			},
+			datePublication : '',
+			dateDisponibilite : '',
+			remise : '',
+			superficie : '',
+			image:null,
+			photo:null
+	}
+	
+	$scope.modifierLocation = function() {
+		locationServiceCN.updateLocation($scope.locationModif, function(callback) {
+			if (callback) {
+				// redirection vers la page d'accueil du conseiller
+				$location.path("listeProprio");
+			}
+		})
+	}
 })

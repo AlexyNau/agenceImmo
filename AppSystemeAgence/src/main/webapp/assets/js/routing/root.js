@@ -56,6 +56,9 @@ monApp.config(function($routeProvider) {
 	}).when("/ajouterLocation", {
 		templateUrl : "views/ajoutLocationCN.html",
 		controller : "addLocationCtrl"
+	}).when("/modifierLocation", {
+		templateUrl : "views/modifLocationCN.html",
+		controller : "updateLocationCNCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})
