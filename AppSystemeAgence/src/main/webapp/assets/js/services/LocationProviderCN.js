@@ -26,8 +26,28 @@ monApp.factory("locationServiceCN", function($http) {
 	}
 	;
 	
+	function modifLocation(locationModif, callback) {
+		$http({
+			method : 'PUT',
+			url : urlWS + 'location',
+			data : angular.toJson(locationModif),
+			header : {
+				'content-type' : 'application/json'
+			}
+		}).then(
+				function success(reponse) {
+					// stockage de la réponse dans le callback
+					callback(reponse.data);
+				},
+				function erreur(reponse) {
+					console.log("****erreur du serveur pour la modif de vente: "
+							+ reponse.status + " " + reponse.statusText)
+				});
+	};
+	
 return {
 		
-		addLocation : ajoutLocation
+		addLocation : ajoutLocation,
+		updateLocation : modifLocation
 	}
 })

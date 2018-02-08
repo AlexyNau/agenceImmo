@@ -71,7 +71,12 @@ public class LocationDaoImpl implements ILocationDao {
 		// récupération de la location existante
 		Location lOut = (Location) s.get(Location.class, loc.getId());
 
-		lOut.setStatut(loc.getStatut());
+		if (lOut.getStatut().equals("disponible")){
+			lOut.setStatut("loue");
+		} else {
+			lOut.setStatut("disponible");
+		}
+		
 
 		// modification de la location dans la base de données
 		s.saveOrUpdate(lOut);
