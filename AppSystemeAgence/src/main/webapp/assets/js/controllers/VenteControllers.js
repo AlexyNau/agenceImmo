@@ -28,7 +28,7 @@ monApp.controller("addVenteCtrl", function($scope, venteService,
 			console.log(venteAjout.proprietaire.id);
 			if (callback == 'OK') {
 				// redirection vers la page d'accueil du conseiller
-				console.log("ajout vente ok");
+				$location.path("listeProprio");
 			}
 		})
 	}
