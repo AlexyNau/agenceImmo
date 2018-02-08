@@ -37,7 +37,7 @@ monApp
     	
 	})
 	
-		.controller("InscriptionClientCtrl", function($scope, clientService, $location) {
+		.controller("InscriptionClientCtrl", function($scope, $rootScope, clientService, $location) {
 
 	// initialiser le propriétaire du formulaire à ajouter
 	$scope.clientAjout = {
@@ -52,14 +52,16 @@ monApp
 				      pays: ''
 				   }
 	}
+	
 	// fonction pour soumettre le proprio a ajouter
 	$scope.ajouterClient = function() {
 		// appel de la méthode du service pour recuperer la liste du web service
 		clientService.addClient($scope.clientAjout, function(callback) {
 		
-			if (callback == 'OK') {
-				// la redirection pour recharger la new liste
-				$location.path("listeProprio");
+			if (callback) {
+				$rootScope.confirmRegisterClient = "Inscription confirmer";
+				// la redirection pour retourner à la page de connexion client
+				$location.path("coClient");
 			}
 		});
 
