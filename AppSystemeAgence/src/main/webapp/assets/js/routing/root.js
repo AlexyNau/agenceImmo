@@ -38,6 +38,9 @@ monApp.config(function($routeProvider) {
 	}).when("/ajouterVente", {
 		templateUrl : "views/ajoutVente.html",
 		controller : "addVenteCtrl"
+	}).when("/listeLocation", {
+		templateUrl : "views/rechercheLocation.html",
+		controller : "findAllLocationCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})
