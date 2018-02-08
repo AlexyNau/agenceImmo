@@ -5,7 +5,8 @@
 
 
 <div class="col-sm-4 col-lg-offset-3" style="position:relative;padding-top:30px;padding-bottom:30px;top:50px;border-style: solid;border-width:1px;border-color:grey;background-color:rgba(215,215,215,0.8);border-radius: 25px;">
-
+<h3 style="text-align: center; color: #406c8d"><strong>Connexion Conseiller :</strong></h3>
+<br/>
 <form name="form" ng-submit="login()" role="form" method="POST">
 	
 	<div class="form-group">
@@ -39,8 +40,8 @@
 
 </div>
 
-<div ng-if="client.nom" style="color:red">
- 	Le client {{client.nom}} est connecte<br/>
+<div ng-if="conseiller.nom" style="color:red">
+ 	Le conseiller {{conseiller.nom}} est connecte<br/>
  	<input type="button" ng-click="logout()" value="Deconnexion">
  </div>
 
