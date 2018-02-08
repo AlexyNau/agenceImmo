@@ -17,7 +17,7 @@
 			<label for="idNum" class="col-sm-2 control-label">Mail</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="idNum"
-					placeholder="Numero adresse proprietaire"
+					placeholder="Adresse Mail"
 					ng-model="clientAjout.mail" required>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 			<label for="idNum" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="idNum"
-					placeholder="Numero adresse proprietaire"
+					placeholder="Password"
 					ng-model="clientAjout.mdp" required>
 			</div>
 		</div>
@@ -37,43 +37,45 @@
 
 		<div class="form-group">
 			<label for="idNum" class="col-sm-2 control-label">Numero
-				Adresse</label>
+				de rue</label>
 			<div class="col-sm-10">
 				<input type="number" class="form-control" id="idNum"
-					placeholder="Numero adresse proprietaire"
+					placeholder="Numero de rue"
 					ng-model="clientAjout.adresse.numero">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="idPays" class="col-sm-2 control-label">Pays
-				Adresse</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="idPays"
-					placeholder="Pays adresse client"
-					ng-model="clientAjout.adresse.pays">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="idRue" class="col-sm-2 control-label">Rue Adresse</label>
+			<label for="idRue" class="col-sm-2 control-label">Rue </label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="idRue"
-					placeholder="Rue adresse Client" ng-model="clientAjout.adresse.rue">
+					placeholder="Nom de la rue" ng-model="clientAjout.adresse.rue">
 			</div>
 		</div>
-		<div class="form-group">
+			<div class="form-group">
 			<label for="idVille" class="col-sm-2 control-label">Ville
-				Adresse</label>
+				</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="idVille"
-					placeholder="Ville adresse Client"
+					placeholder="Ville"
 					ng-model="clientAjout.adresse.ville">
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="idPays" class="col-sm-2 control-label">Pays
+				</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="idPays"
+					placeholder="Pays"
+					ng-model="clientAjout.adresse.pays">
+			</div>
+		</div>
+		
+	
+		<div class="form-group">
 			<label for="idNom" class="col-sm-2 control-label">Nom</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="idNom"
-					placeholder="Nom du Client" ng-model="clientAjout.nom" required>
+					placeholder="Nom" ng-model="clientAjout.nom" required>
 			</div>
 		</div>
 		<div class="form-group">
@@ -81,7 +83,7 @@
 				Telephone</label>
 			<div class="col-sm-10">
 				<input type="tel" class="form-control" id="idTelp"
-					placeholder="Numero privee" ng-model="clientAjout.telephone" required>
+					placeholder="Tel" ng-model="clientAjout.telephone" required>
 			</div>
 		</div>
 
