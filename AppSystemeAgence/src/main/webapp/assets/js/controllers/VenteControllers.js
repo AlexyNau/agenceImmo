@@ -1,4 +1,11 @@
-monApp.controller("addVenteCtrl", function($scope, venteService,
+monApp.controller("findAllVenteCtrl", function($scope, venteService) {
+	//appel de la méthode service
+	venteService.getListe(function(callback) {
+		$scope.listeVente = callback;
+	})
+})
+
+.controller("addVenteCtrl", function($scope, venteService,
 		proprioService, $location) {
 	// initialisation de la vente du formulaire à ajouter
 	$scope.venteAjout = {
@@ -39,8 +46,27 @@ monApp.controller("addVenteCtrl", function($scope, venteService,
 		})
 	}
 }).controller("updateVenteCtrl", function($scope, venteService, $location) {
+	$scope.venteModif = {
+			id:'',
+			adresse : {
+				numero : '',
+				rue : '',
+				ville : '',
+				pays : ''
+		
+			},
+			datePublication : '',
+			dateDisponibilite : '',
+			remise : '',
+			etat : '',
+			prixAchat : '',
+			superficie : '',
+			image:null,
+			photo:null
+		}
+	
 	$scope.modifierVente = function() {
-		venteService.updateVente(venteModif, function(callback) {
+		venteService.updateVente($scope.venteModif, function(callback) {
 			if (callback) {
 				// redirection vers la page d'accueil du conseiller
 				$location.path("listeProprio");

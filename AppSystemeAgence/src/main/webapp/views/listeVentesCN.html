@@ -4,29 +4,33 @@
 
 
 <h1 style="text-align: center">
-	<strong>Liste biens à vendre :</strong>
+	<strong>Liste biens a vendre :</strong>
 </h1>
 
-Statut du bien :
-<input type="text" ng-model="search.statut" />
-
-<div class="form-group">
-	<label for="idStatut" class="col-sm-2 control-label">Statut des
-		biens</label>
-	<div class="col-sm-4 col-sm-offset-4">
-		<select class="form-control" id="idStatut" ng-model="search.statut">
-			<option value="disponible" id="idRestauration">Disponible</option>
-			<option value="" id="idAll"></option>
-			<option value="disponible" id="idDispo">Disponible</option>
-			<option value="vendu" id="idVendu">Vendu</option>
-		</select>
+<div class="col-sm-7 col-lg-offset-2"
+	style="position: relative; padding-top: 20px; padding-bottom: 20px; top: 30px; border-style: solid; border-width: 1px; border-color: grey; background-color: rgba(215, 215, 215, 0.8); border-radius: 25px;margin-bottom: 50px">
+	<div class="form-group">
+		<label for="idStatut" class="col-sm-2 control-label">Statut
+			des biens</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idStatut" ng-model="search.statut">
+				<option value="" id="idAll">Tous</option>
+				<option value="disponible" id="idDispo">Disponible</option>
+				<option value="vendu" id="idVendu">Vendu</option>
+			</select>
+		</div>
 	</div>
 </div>
+
+<br/>
+<br/>
+<br/>
 
 <table class="table table-bordered" style="text-align: center;">
 
 	<tr>
 		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Statut</th>
 		<th style="text-align: center;">Numero</th>
 		<th style="text-align: center;">Rue</th>
 		<th style="text-align: center;">Ville</th>
@@ -39,17 +43,26 @@ Statut du bien :
 		<th style="text-align: center;">Etat</th>
 		<th style="text-align: center;">Superficie</th>
 		<th style="text-align: center;">Type de bien</th>
+		<th style="text-align: center;">Photo</th>
 	</tr>
 
 	<tr ng-repeat="v in listeVente | filter:search">
-		<td>{{p.id}}</td>
-		<td>{{p.nom}}</td>
-		<td>{{p.numTelPrive}}</td>
-		<td>{{p.numTelTravail}}</td>
-		<td><button class="btn btn-success" ng-click="supprimerLien(p)">Supprimer</button>
-			|
-			<button class="btn btn-success" ng-click="modifierLien(p)">Modifier</button>
-		</td>
+		<td>{{v.id}}</td>
+		<td>{{v.statut}}</td>
+		<td>{{v.numero}}</td>
+		<td>{{v.rue}}</td>
+		<td>{{v.ville}}</td>
+		<td>{{v.pays}}</td>
+		<td>{{v.datePublication}}</td>
+		<td>{{v.dateDisponibilite}}</td>
+		<td>{{v.prixAchat}}</td>
+		<td>{{v.remise}}</td>
+		<td>{{v.revenuCadastral}}</td>
+		<td>{{v.etat}}</td>
+		<td>{{v.superficie}}</td>
+		<td>{{v.classeStd.type_bien}}</td>
+		<td><img ng-src="data:image/JPEG;base64,{{v.photo}}"
+					style="max-height: 70px; max-width: 70px"></td>
 	</tr>
 
 </table>
