@@ -23,6 +23,12 @@ monApp.config(function($routeProvider) {
 	}).when("/coClient", {
 		templateUrl : "views/login_client.html",
 		controller : "ConnexionClientCtrl"
+	}).when("/inscriptionClient",{
+		templateUrl:"views/inscription_client.html",
+		controller:"InscriptionClientCtrl"
+	}).when("/mapConseiller",{
+		templateUrl:"views/map_conseiller.html",
+		controller:"mapCtrl"
 	}).when("/coConseiller", {
 		templateUrl : "views/login_conseiller.html",
 		controller : "ConnexionConseillerCtrl"
