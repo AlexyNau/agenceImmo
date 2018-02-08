@@ -1,6 +1,6 @@
 //creation des controllers de mon App
 
-monApp.controller("findAllVisiteCtrl", function($scope, visiteService) {
+monApp.controller("findAllVisiteCtrl", function($scope, visiteService,$rootScope,$location) {
 
 	// appel de la méthode du service pour recuperer la liste du web service
 	visiteService.findListeVisite(function(callback) {
@@ -8,6 +8,39 @@ monApp.controller("findAllVisiteCtrl", function($scope, visiteService) {
 		// Stocker la liste récupéré dans la variable listeVisite du scope
 		$scope.listeVisite = callback;
 	});
+	
+	// fonction pour modifier grace au lien du tableau
+	// initialiser l'objet  visite dans le rootScope
+	$rootScope.visiteUpdate={
+			id:undefined,
+			date : '',
+			client : '',
+			location :'',
+			vente :''
+	}
+	//la fonction appelée a partir de la liste
+	$scope.modifierVLien = function(visite) {
+		//stocker les données du visite récupéré dans le rootScope
+		$rootScope.visiteUpdate=visite;
+		//rediriger vers la vue modif
+$location.path("modifierVisite");
+	}
+	
+	// fonction pour supprimer grace au lien du tableau
+	$scope.supprimerVLien = function(visite) {
+		visiteService.supVisite(visite.id, function(callbackDelete) {
+			if (callbackDelete == 'OK') {
+				// appel de la méthode du service pour recuperer la liste du web
+				// service
+				visiteService.findListeVisite(function(callbackList) {
+
+					// Stocker la liste récupéré dans la variable listeProprio du
+					// scope
+					$scope.listeVisite = callbackList;
+				});
+			}
+		})
+	}
 	
 })// ***** Controller ajout d'une visite *****
 .controller("visiteAddCtrl",function($scope,visiteService,$location){
@@ -110,4 +143,32 @@ monApp.controller("findAllVisiteCtrl", function($scope, visiteService) {
 				});
 
 			};
+			// fonction pour modifier grace au lien du tableau
+			// initialiser l'objet  visite dans le rootScope
+			$rootScope.proprioUpdate={
+					id:undefined,
+					date : '',
+					client : '',
+					location :'',
+					vente :''
+			}
+			//la fonction appelée a partir de la liste
+			$scope.modifierVLien = function(visite) {
+				//stocker les données récupéré dans le rootScope
+				$rootScope.visiteUpdate=visite;
+				//rediriger vers la vue modif
+		$location.path("modifierVisite");
+			}
+			
+			// fonction pour supprimer grace au lien du tableau
+			$scope.supprimerVLien = function(visite) {
+				visiteService.supVisite(visite.id, function(callbackDelete) {
+					if (callbackDelete == 'OK') {
+						// appel de la méthode du service pour recuperer la liste du web
+						// service
+						$location.path("listeVisite");
+
+					}
+				})
+			}
 		})

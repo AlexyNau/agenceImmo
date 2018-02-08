@@ -59,6 +59,9 @@ monApp.config(function($routeProvider) {
 	}).when("/modifierLocation", {
 		templateUrl : "views/modifLocationCN.html",
 		controller : "updateLocationCNCtrl"
+	}).when("/listeVisite", {
+		templateUrl : "views/gestionVisiteCN.html",
+		controller : "findAllVisiteCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})

@@ -1,0 +1,29 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+<h1 style="text-align: center">
+		<strong>Liste des visites :</strong>
+	</h1>
+	
+<table class="table table-bordered" style="text-align: center">
+
+	<tr>
+		<th>ID</th>
+		<th>Client</th>
+		<th>Vente</th>
+		<th>Location</th>
+		<th>Date</th>
+		<th style="text-align: center;">Operations</th>
+	</tr>
+	<tr ng-repeat="visite in listeVisite">
+		<td>{{visite.id}}</td>
+		<td>{{visite.client}}</td>
+		<td>{{visite.vente}}</td>
+		<td>{{visite.location}}</td>
+		<td>{{visite.dateEtHeure}}</td>
+		<td><button class="btn btn-success" ng-click="supprimerVLien(p)" >Supprimer</button> | <button class="btn btn-success" ng-click="modifierVLien(p)" >Modifier</button> </td>
+	</tr>
+
+</table>
