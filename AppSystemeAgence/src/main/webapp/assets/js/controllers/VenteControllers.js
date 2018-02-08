@@ -7,15 +7,22 @@ monApp.controller("addVenteCtrl", function($scope, venteService,
 			rue : '',
 			ville : '',
 			pays : ''
+	
 		},
 		datePublication : '',
 		dateDisponibilite : '',
 		remise : '',
 		etat : '',
 		prixAchat : '',
-		superficie : ''
+		superficie : '',
+		image:null,
+		photo:null
 	}
-
+	
+	
+	$scope.affiche=function(){
+		$scope.venteAjout.photo=$scope.venteAjout.image.base64;
+	}
 	// récupérer la liste des propriétaires
 	proprioService.findListeProprio(function(callback) {
 		$scope.listeProprietaires = callback;

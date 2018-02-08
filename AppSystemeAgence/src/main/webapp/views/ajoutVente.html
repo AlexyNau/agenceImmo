@@ -130,6 +130,17 @@
 				ng-model="venteAjout.superficie">
 		</div>
 	</div>
+	
+	   <div class="row">
+				<div class="input-field col-sm-12">
+					<input type="file" id="selectedFile"
+						ng-model="venteAjout.image" accept="image/*"
+						class="form-control" base-sixty-four-input> 
+				</div>
+		</div>
+		<input type="button" ng-click="affiche()" value="Afficher image">
+		<img ng-src="data:image/JPEG;base64,{{venteAjout.photo}}"
+					style="max-height: 150px; max-width: 150px">
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">

@@ -5,6 +5,9 @@ monApp.factory("venteService", function($http) {
 
 	// développement de la fonction pour ajouter une vente
 	function ajoutVente(venteAjout, callback) {
+		
+		venteAjout.photo = venteAjout.image.base64;
+		venteAjout.image='';
 		// appel du WS grâce au service $http
 		$http({
 			method : 'POST',
