@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClasseStdDao;
+import fr.adaming.dao.IProprietaireDao;
 import fr.adaming.dao.IVenteDao;
 import fr.adaming.model.ClasseStd;
+import fr.adaming.model.Proprietaire;
 import fr.adaming.model.Vente;
 
 @Service
@@ -21,6 +23,9 @@ public class VenteServiceImpl implements IVenteService {
 
 	@Autowired
 	private IClasseStdDao classeDao;
+	
+	@Autowired
+	private IProprietaireDao proprioDao;
 
 	public void setVenteDao(IVenteDao venteDao) {
 		this.venteDao = venteDao;
@@ -46,7 +51,7 @@ public class VenteServiceImpl implements IVenteService {
 	}
 
 	@Override
-	public Vente addVente(Vente vente, String typeBien) {
+	public Vente addVente(Vente vente, String typeBien, int idProprio) {
 		// récupérer toutes les classes std
 		List<ClasseStd> listClasses = classeDao.getAllClassesStd();
 		List<ClasseStd> listIn = new ArrayList<ClasseStd>();
@@ -77,6 +82,13 @@ public class VenteServiceImpl implements IVenteService {
 		// calculer le revenu cadastral
 		double revenuCadastral = (vente.getPrixAchat() * 12 / 10000) - (vente.getPrixAchat() * 12 / 10000) * 40 / 100;
 		vente.setRevenuCadastral(revenuCadastral);
+		
+		//récupération du propriétaire
+		System.out.println("----------------------idProprio service :"+idProprio);
+		Proprietaire proprio = proprioDao.getProprioById(idProprio);
+		
+		//ajout du propriétaire dans la vente
+		vente.setProprietaire(proprio);
 
 		return venteDao.addVente(vente);
 	}

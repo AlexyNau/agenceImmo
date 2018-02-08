@@ -1,3 +1,15 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+<div class="col-sm-7 col-lg-offset-2"
+	style="position: relative; padding-top: 30px; padding-bottom: 30px; top: 50px; border-style: solid; border-width: 1px; border-color: grey; background-color: rgba(215, 215, 215, 0.8); border-radius: 25px;">
+
+
+<h3 style="text-align: center; color: #406c8d">
+		<strong>Ajouter un bien à vendre :</strong>
+	</h3>
+
 <!-- Formulaire d'ajout -->
 <form class="form-horizontal">
 
@@ -7,7 +19,7 @@
 		<div class="col-sm-4 col-sm-offset-4">
 			<select class="form-control" id="idProp"
 				ng-model="venteAjout.proprietaire.id">
-				<option ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
+				<option value="{{proprietaire.id}}" id="idProprio" ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
 			</select>
 		</div>
 	</div>
@@ -125,3 +137,5 @@
 		</div>
 	</div>
 </form>
+
+</div>

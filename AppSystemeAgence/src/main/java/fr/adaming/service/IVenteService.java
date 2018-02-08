@@ -13,7 +13,7 @@ public interface IVenteService {
 	
 	public Vente updateVente(Vente vente);
 	
-	public Vente addVente(Vente vente, String typeBien);
+	public Vente addVente(Vente vente, String typeBien, int idProprio);
 	
 	public int deleteVente(int idVente);
 	

@@ -29,7 +29,6 @@ public class Vente extends BienImmobilier {
 	private double prixAchat;
 	private String etat; // Soit : à restaurer, correct, impeccable
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id_p", name = "proprietaire_id")
 	private Proprietaire proprietaire;
