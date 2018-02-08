@@ -25,8 +25,7 @@ monApp.controller("addVenteCtrl", function($scope, venteService,
 	$scope.ajouterVente = function() {
 		// appel de la méthode du service
 		venteService.addVente($scope.venteAjout, function(callback) {
-			console.log(venteAjout.proprietaire.id);
-			if (callback == 'OK') {
+			if (callback) {
 				// redirection vers la page d'accueil du conseiller
 				$location.path("listeProprio");
 			}

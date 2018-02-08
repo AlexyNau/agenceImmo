@@ -16,7 +16,7 @@ monApp.factory("venteService", function($http) {
 		}).then(
 				function success(reponse) {
 					// stockage de la réponse dans le callback
-					callback(reponse.statusText);
+					callback(reponse.data);
 				},
 				function erreur(reponse) {
 					console.log("****erreur du serveur pour l'ajout de vente: "
