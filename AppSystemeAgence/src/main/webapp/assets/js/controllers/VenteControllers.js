@@ -1,12 +1,6 @@
-monApp.controller("addVenteCtrl", function($scope, venteService, $location) {
+monApp.controller("addVenteCtrl", function($scope, venteService, proprioService, $location) {
 	// initialisation de la vente du formulaire à ajouter
 	$scope.venteAjout = {
-		proprietaire : {
-			id : ''
-		},
-		classeStd : {
-			type_bien : ''
-		},
 		adresse : {
 			numero : '',
 			rue : '',
@@ -20,6 +14,10 @@ monApp.controller("addVenteCtrl", function($scope, venteService, $location) {
 		prixAchat:'',
 		superficie:''
 	}
+	
+	//récupérer la liste des propriétaires
+	$scope.
+	$scope.listeProprietaires
 	
 	//fonction pour soumettre la vente à ajouter
 	$scope.ajouterVente = function() {

@@ -27,7 +27,7 @@ monApp.config(function($routeProvider) {
 		templateUrl : "views/login_conseiller.html",
 		controller : "ConnexionConseillerCtrl"
 	}).when("/ajouterVente", {
-		templateUrl : "views/ajoutVente",
+		templateUrl : "views/ajoutVente.html",
 		controller : "addVenteCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
