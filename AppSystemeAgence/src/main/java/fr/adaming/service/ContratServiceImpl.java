@@ -47,6 +47,7 @@ public class ContratServiceImpl implements IContratService {
 		Client client = clientDao.getClientById(idClient);
 		Location loc = locDao.getLocationById(idLocation);
 		
+		contrat.setVente(null);
 		contrat.setClient(client);
 		contrat.setLocation(loc);
 		contrat.setPrix(loc.getLoyer()+loc.getCharges());
@@ -59,6 +60,7 @@ public class ContratServiceImpl implements IContratService {
 		Client client = clientDao.getClientById(idClient);
 		Vente vente = venteDao.getVenteById(idVente);
 		
+		contrat.setLocation(null);
 		contrat.setClient(client);
 		contrat.setVente(vente);
 		contrat.setPrix(vente.getPrixAchat());
