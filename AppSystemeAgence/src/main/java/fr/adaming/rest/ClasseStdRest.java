@@ -3,6 +3,7 @@ package fr.adaming.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,8 +24,8 @@ public class ClasseStdRest {
 		return classeService.getAllClassesStd();
 	}
 	
-	@RequestMapping(value="/classe", method=RequestMethod.GET, produces = "application/json")
-	public ClasseStd getClasseStdById(@RequestParam("pId")int id) {
+	@RequestMapping(value="/classe/{pId}", method=RequestMethod.GET, produces = "application/json")
+	public ClasseStd getClasseStdById(@PathVariable("pId")int id) {
 		return classeService.getClasseStdById(id);
 	}
 	
