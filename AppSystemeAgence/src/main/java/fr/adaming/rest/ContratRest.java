@@ -34,7 +34,7 @@ public class ContratRest {
 		return contratService.addContratLocation(contrat, contrat.getClient().getId(), contrat.getLocation().getId());
 	}
 	
-	@RequestMapping(value = "/addContratLocation", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	@RequestMapping(value = "/addContratVente", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Contrat addContratVente(@RequestBody Contrat contrat) {
 		return contratService.addContratVente(contrat, contrat.getClient().getId(), contrat.getVente().getId());
 	}
