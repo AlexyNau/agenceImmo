@@ -1,0 +1,30 @@
+ Filtrer par le type de bien:
+<input type="text" ng-model="search.classeStd.type_bien">
+<br />
+Filtrer en fonction du loyer(euros):
+<input type="text" ng-model="search.loyer">
+<br />
+Filtrer en fonction de la superficie minimum:
+<input type="text" ng-model="search.classeStd.sup_min">
+<br />
+
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">Type de bien</th>
+		<th style="text-align: center;">loyer</th>
+		<th style="text-align: center;">Meuble/non Meuble</th>
+		<th style="text-align: center;">Superficie</th>
+
+	</tr>
+
+	<tr ng-repeat="l in listeLocation |filter:search">
+		<td>{{l.classeStd.type_bien}}</td>
+		<td>{{l.loyer|currency}}</td>
+		<td>{{l.garniture}}</td>
+		<td>{{l.classeStd.sup_min}}</td>
+
+	</tr>
+
+</table>
