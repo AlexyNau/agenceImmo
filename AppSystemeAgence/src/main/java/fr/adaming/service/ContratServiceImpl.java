@@ -10,7 +10,10 @@ import fr.adaming.dao.IClientDao;
 import fr.adaming.dao.IContratDao;
 import fr.adaming.dao.ILocationDao;
 import fr.adaming.dao.IVenteDao;
+import fr.adaming.model.Client;
 import fr.adaming.model.Contrat;
+import fr.adaming.model.Location;
+import fr.adaming.model.Vente;
 
 @Service
 @Transactional
@@ -41,12 +44,22 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public Contrat addContratLocation(Contrat contrat, int idClient, int idLocation) {
-
+		Client client = clientDao.getClientById(idClient);
+		Location loc = locDao.getLocationById(idLocation);
+		
+		contrat.setClient(client);
+		contrat.setLocation(loc);
+		
 		return contratDao.addContrat(contrat);
 	}
 	
 	@Override
 	public Contrat addContratVente(Contrat contrat, int idClient, int idVente) {
+		Client client = clientDao.getClientById(idClient);
+		Vente vente = venteDao.getVenteById(idVente);
+		
+		contrat.setClient(client);
+		contrat.setVente(vente);
 
 		return contratDao.addContrat(contrat);
 	}

@@ -29,9 +29,14 @@ public class ContratRest {
 		return contratService.getContratById(id);
 	}
 
-	@RequestMapping(value = "/addContrat", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public Contrat addContrat(@RequestBody Contrat contrat) {
-		return contratService.addContrat(contrat);
+	@RequestMapping(value = "/addContratLocation", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public Contrat addContratLocation(@RequestBody Contrat contrat) {
+		return contratService.addContratLocation(contrat, contrat.getClient().getId(), contrat.getLocation().getId());
+	}
+	
+	@RequestMapping(value = "/addContratLocation", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public Contrat addContratVente(@RequestBody Contrat contrat) {
+		return contratService.addContratVente(contrat, contrat.getClient().getId(), contrat.getVente().getId());
 	}
 
 	@RequestMapping(value = "/modifierContrat", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
