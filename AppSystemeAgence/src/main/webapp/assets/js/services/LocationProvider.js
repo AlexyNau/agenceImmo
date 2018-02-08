@@ -16,7 +16,7 @@ monApp.factory("locationService",function($http){
 			 
 			  url: urlWS+'listeLocations' //url de la methode WS
 			}).then(function success(reponse) {
-			   
+			   console.log("*****recup location:" +reponse.data)
 				//stocker la reponse dans la callback afin de la transporter au controller
 				  callback(reponse.data);
 				  

@@ -1,29 +1,45 @@
- Filtrer par le type de bien:
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerUser.html'"></div>
+</div>
+
+Filtrer par le type de bien:
 <input type="text" ng-model="search.classeStd.type_bien">
 <br />
 Filtrer en fonction du loyer(euros):
-<input type="text" ng-model="search.loyer">
+<input type="number" ng-model="search.loyer">
 <br />
-Filtrer en fonction de la superficie minimum:
-<input type="text" ng-model="search.classeStd.sup_min">
+Filtrer en fonction de la superficie min desire:
+<input type="number" ng-model="min.sup_min">
+<br />
+Filtrer en fonction de la superficie max:
+<input type="number" ng-model="max.sup_min">
+<br />
+Filtrer meuble ou non:
+<input type="text" ng-model="search.garniture">
 <br />
 
 
 <table class="table table-bordered" style="text-align: center;">
 
 	<tr>
+		<th style="text-align: center;">ID</th>
 		<th style="text-align: center;">Type de bien</th>
 		<th style="text-align: center;">loyer</th>
 		<th style="text-align: center;">Meuble/non Meuble</th>
 		<th style="text-align: center;">Superficie</th>
+		<th style="text-align: center;">Photos</th>
+		<th style="text-align: center;">Favoris</th>
 
 	</tr>
 
-	<tr ng-repeat="l in listeLocation |filter:search">
+	<tr ng-repeat="l in listeLocation |filter:search |filter:lowerThan:max">
+		<td>{{l.id}}</td>
 		<td>{{l.classeStd.type_bien}}</td>
 		<td>{{l.loyer|currency}}</td>
 		<td>{{l.garniture}}</td>
 		<td>{{l.classeStd.sup_min}}</td>
+		<td>{{l.image}}</td>
+		<td><button class="btn btn-success" ng-click="favorisLien(l)" >Enregistrer</button></td>
 
 	</tr>
 
