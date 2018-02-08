@@ -40,7 +40,7 @@ public class LocationRest {
 
 	@RequestMapping(value="/location", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Location addLocation(@RequestBody Location loc) {
-		return locService.addLocation(loc, loc.getClasseStd().getType_bien());
+		return locService.addLocation(loc, loc.getClasseStd().getType_bien(), loc.getProprietaire().getId());
 	}
 
 	@RequestMapping(value="/location", method=RequestMethod.DELETE)

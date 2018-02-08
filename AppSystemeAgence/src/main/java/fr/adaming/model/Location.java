@@ -32,7 +32,6 @@ public class Location extends BienImmobilier implements Serializable {
 	private int bail;
 	private boolean garniture;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id_p", name = "proprietaire_id")
 	private Proprietaire proprietaire;

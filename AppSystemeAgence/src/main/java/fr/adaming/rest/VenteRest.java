@@ -41,7 +41,6 @@ public class VenteRest {
 	
 	@RequestMapping(value="/vente", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Vente addVente(@RequestBody Vente vente) {
-		System.out.println("---------------------------------id proprio rest"+vente.getProprietaire().getId());
 		return venteService.addVente(vente, vente.getClasseStd().getType_bien(), vente.getProprietaire().getId());
 	}
 	

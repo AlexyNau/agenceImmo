@@ -13,7 +13,7 @@ public interface ILocationServiceImpl {
 	
 	public Location updateLocation(Location loc);
 	
-	public Location addLocation(Location loc, String typeBien);
+	public Location addLocation(Location loc, String typeBien, int idProprio);
 	
 	public int deleteLocation(int idLoc);
 	

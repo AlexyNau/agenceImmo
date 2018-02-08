@@ -84,7 +84,6 @@ public class VenteServiceImpl implements IVenteService {
 		vente.setRevenuCadastral(revenuCadastral);
 		
 		//récupération du propriétaire
-		System.out.println("----------------------idProprio service :"+idProprio);
 		Proprietaire proprio = proprioDao.getProprioById(idProprio);
 		
 		//ajout du propriétaire dans la vente

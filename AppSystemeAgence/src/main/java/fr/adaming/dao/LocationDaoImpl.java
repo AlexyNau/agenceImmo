@@ -71,25 +71,7 @@ public class LocationDaoImpl implements ILocationDao {
 		// récupération de la location existante
 		Location lOut = (Location) s.get(Location.class, loc.getId());
 
-		// stockage de la location modifiée dans la location préexistante
-		lOut.setAdresse(loc.getAdresse());
-		lOut.setBail(loc.getBail());
-		lOut.setCaution(loc.getCaution());
-		lOut.setCharges(loc.getCharges());
-		lOut.setClasseStd(loc.getClasseStd());
-		lOut.setContrat(loc.getContrat());
-		lOut.setDateDisponibilite(loc.getDateDisponibilite());
-		lOut.setDatePublication(loc.getDatePublication());
-		lOut.setGarniture(loc.isGarniture());
-		lOut.setImage(loc.getImage());
-		lOut.setLoyer(loc.getLoyer());
-		lOut.setPhoto(loc.getPhoto());
-		lOut.setProprietaire(loc.getProprietaire());
-		lOut.setRemise(loc.getRemise());
-		lOut.setRevenuCadastral(loc.getRevenuCadastral());
 		lOut.setStatut(loc.getStatut());
-		lOut.setVisites(loc.getVisites());
-		lOut.setSuperficie(loc.getSuperficie());
 
 		// modification de la location dans la base de données
 		s.saveOrUpdate(lOut);

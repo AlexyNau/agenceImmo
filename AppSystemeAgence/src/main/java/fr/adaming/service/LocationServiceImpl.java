@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClasseStdDao;
 import fr.adaming.dao.ILocationDao;
+import fr.adaming.dao.IProprietaireDao;
 import fr.adaming.model.ClasseStd;
 import fr.adaming.model.Location;
+import fr.adaming.model.Proprietaire;
 
 @Service
 @Transactional
@@ -21,6 +23,9 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 
 	@Autowired
 	private IClasseStdDao classeDao;
+	
+	@Autowired
+	private IProprietaireDao proprioDao;
 
 	public void setLocDao(ILocationDao locDao) {
 		this.locDao = locDao;
@@ -45,7 +50,7 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 	}
 
 	@Override
-	public Location addLocation(Location loc, String typeBien) {
+	public Location addLocation(Location loc, String typeBien, int idProprio) {
 		// récupérer toutes les classes std
 		List<ClasseStd> listClasses = classeDao.getAllClassesStd();
 		List<ClasseStd> listIn = new ArrayList<ClasseStd>();
@@ -79,6 +84,12 @@ public class LocationServiceImpl implements ILocationServiceImpl {
 		double revenuCadastral = loc.getLoyer() * 12 - (loc.getLoyer() * 12 * 40 / 100);
 		loc.setRevenuCadastral(revenuCadastral);
 
+		//récupération du proprio
+		Proprietaire proprio = proprioDao.getProprioById(idProprio);
+		
+		//ajout du proprio dans la location
+		loc.setProprietaire(proprio);
+		
 		return locDao.addLocation(loc);
 	}
 
