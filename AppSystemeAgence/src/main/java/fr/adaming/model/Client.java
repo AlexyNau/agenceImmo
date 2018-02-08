@@ -43,6 +43,7 @@ public class Client implements Serializable {
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Visite> visites;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Contrat> contrats;
 
