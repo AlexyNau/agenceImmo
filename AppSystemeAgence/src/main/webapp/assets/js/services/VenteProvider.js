@@ -47,6 +47,26 @@ monApp.factory("venteService", function($http) {
 				});
 	};
 	
+	function ajoutContrat(contratAjout, callback) {
+		// appel du WS grâce au service $http
+		$http({
+			method : 'POST',
+			url : urlWS + 'addContratVente',
+			data : angular.toJson(contratAjout),
+			header : {
+				'content-type' : 'application/json'
+			}
+		}).then(
+				function success(reponse) {
+					// stockage de la réponse dans le callback
+					callback(reponse.data);
+				},
+				function erreur(reponse) {
+					console.log("****erreur du serveur pour l'ajout de vente: "
+							+ reponse.status + " " + reponse.statusText)
+				});
+	};
+	
 	function recupListe(callback){
 		$http({
 			method : 'GET', // méthode Http
@@ -67,7 +87,8 @@ monApp.factory("venteService", function($http) {
 		
 		addVente : ajoutVente,
 		updateVente : modifVente,
-		getListe : recupListe
+		getListe : recupListe,
+		addContrat : ajoutContrat
 	}
 
 });

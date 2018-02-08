@@ -49,6 +49,7 @@ public class ContratServiceImpl implements IContratService {
 		
 		contrat.setClient(client);
 		contrat.setLocation(loc);
+		contrat.setPrix(loc.getLoyer()+loc.getCharges());
 		
 		return contratDao.addContrat(contrat);
 	}
@@ -60,6 +61,7 @@ public class ContratServiceImpl implements IContratService {
 		
 		contrat.setClient(client);
 		contrat.setVente(vente);
+		contrat.setPrix(vente.getPrixAchat());
 
 		return contratDao.addContrat(contrat);
 	}

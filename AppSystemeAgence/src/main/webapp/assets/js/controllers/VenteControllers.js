@@ -45,8 +45,12 @@ monApp.controller("findAllVenteCtrl", function($scope, venteService) {
 			}
 		})
 	}
-}).controller("updateVenteCtrl", function($scope, venteService, $location) {
-	$scope.venteModif = {
+}).controller("updateVenteCtrl", function($scope, venteService, clientService, $location) {
+	$scope.contratAjout={
+	prix:'',
+	date:'',
+			
+	vente:{
 			id:'',
 			adresse : {
 				numero : '',
@@ -64,13 +68,16 @@ monApp.controller("findAllVenteCtrl", function($scope, venteService) {
 			image:null,
 			photo:null
 		}
+	}
 	
-	$scope.modifierVente = function() {
-		venteService.updateVente($scope.venteModif, function(callback) {
-			if (callback) {
-				// redirection vers la page d'accueil du conseiller
-				$location.path("listeProprio");
-			}
+	clientService.findListeClient(function(callback){
+		$scope.listeClient=callback;
+	})
+	
+	$scope.ajouterContrat = function() {
+		venteService.updateVente($scope.contratAjout.vente, function(callback) {
+		})
+		venteService.addContrat($scope.contratAjout, function(callback) {	
 		})
 	}
 })

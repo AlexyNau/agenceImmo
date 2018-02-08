@@ -43,7 +43,7 @@ public class ContratRest {
 	public Contrat updateContrat(@RequestBody Contrat contrat) {
 		return contratService.updateContrat(contrat);
 	}
-
+	
 	@RequestMapping(value = "/deleteContrat/{pId}", method = RequestMethod.DELETE)
 	public void deleteContrat(@PathVariable("pId") int id) {
 		contratService.deleteContrat(id);
