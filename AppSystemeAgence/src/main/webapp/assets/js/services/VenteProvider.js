@@ -32,7 +32,7 @@ monApp.factory("venteService", function($http) {
 		$http({
 			method : 'PUT',
 			url : urlWS + 'vente',
-			data : angular.toJson(venteAjout),
+			data : angular.toJson(venteModif),
 			header : {
 				'content-type' : 'application/json'
 			}
@@ -45,12 +45,29 @@ monApp.factory("venteService", function($http) {
 					console.log("****erreur du serveur pour la modif de vente: "
 							+ reponse.status + " " + reponse.statusText)
 				});
-	}
+	};
+	
+	function recupListe(callback){
+		$http({
+			method : 'GET', // méthode Http
+			url : urlWS + 'listeVentes' // url de la méthode du webservice
+		}).then(function success(reponse) {
+			// stocker la réponse dans le callback afin de la
+			// transporter au controller
+			callback(reponse.data);
+
+		},
+		function failure(reponse) {
+			console.log("------- Erreur du serveur (liste) "
+					+ reponse.status + " " + reponse.statusText);
+		});
+	};
 
 	return {
 		
 		addVente : ajoutVente,
-		updateVente : modifVente
+		updateVente : modifVente,
+		getListe : recupListe
 	}
 
 });
