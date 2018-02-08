@@ -26,6 +26,12 @@ monApp.controller('ConnexionConseillerCtrl',function ($scope,conseillerService,$
 		if($rootScope.conseiller)
 			console.log("Valeur nom conseiller scope:"+$rootScope.conseiller.nom)
     	
+			// Pour la déconnexion (accesible partout avec rootScrope)
+		$rootScope.logoutConseiller=function () {
+			console.log("Tentative deco ...")
+			$cookieStore.remove('conseillerCookie');
+			$rootScope.conseiller='';
+		}
     	
 	});
 	
