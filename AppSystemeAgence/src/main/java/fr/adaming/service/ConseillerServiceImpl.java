@@ -16,7 +16,9 @@ public class ConseillerServiceImpl implements IConseillerService{
 	
 	@Override
 	public Conseiller isExist(String mail, String mdp) {
+		Conseiller c = conseillerDao.isExist(mail, mdp);
 		
+		System.out.println(c);
 		return conseillerDao.isExist(mail, mdp);
 	}
 

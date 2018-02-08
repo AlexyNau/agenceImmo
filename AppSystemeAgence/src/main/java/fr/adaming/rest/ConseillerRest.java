@@ -18,7 +18,11 @@ public class ConseillerRest {
 	
 	@RequestMapping(value = "/logConseiller/{pMail}/{pMdp}", method = RequestMethod.GET, produces = "application/json")
 	public Conseiller logConseiller(@PathVariable("pMail") String mail,@PathVariable("pMdp") String mdp) {
-		return conseillerService.isExist(mail, mdp);
+		Conseiller c = conseillerService.isExist(mail, mdp);
+		
+		System.out.println(c);
+		c.setVisites(null);
+		return c;
 	}
 	
 }

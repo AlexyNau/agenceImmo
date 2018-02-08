@@ -53,9 +53,8 @@
 
 /* background des liens menus */
 #menu-demo2 li:first-child {
-    background-color: #65537A;
-    background-image: -webkit-linear-gradient(top, #4a5c6e 0%, #2c3e50 100%);
-    background-image: linear-gradient(to bottom, #4a5c6e 0%, #2c3e50 100%);
+    /* Pour le logo de l'agence : */
+    background-image: linear-gradient(to bottom, #333A40 0%, #406c8d 100%);
 }
 
 #menu-demo2 li:nth-child(2) {

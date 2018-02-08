@@ -28,46 +28,42 @@
 <!-- ajout de mes fichiers -->
 <script type="text/javascript" src="assets/js/module/application.js"></script>
 <script type="text/javascript" src="assets/js/routing/root.js"></script>
+<!-- **** User **** -->
+<script type="text/javascript"
+	src="assets/js/controllers/UserControllers.js"></script>
+
+<!-- **** Proprietaire **** -->
 <script type="text/javascript"
 	src="assets/js/services/ProprietaireProvider.js"></script>
 <script type="text/javascript"
 	src="assets/js/controllers/ProprietaireControllers.js"></script>
 
 
-<script type="text/javascript" src="assets/js/module/app.js"></script>
-<script type="text/javascript"
-	src="assets/js/services/conseillierProvider.js"></script>
-<script type="text/javascript"
-	src="assets/js/controllers/ConseillerControllers.js"></script>
-<script type="text/javascript"
-	src="assets/js/controllers/HomeControllers.js"></script>
+<!-- **** Client **** -->
 <script type="text/javascript"
 	src="assets/js/controllers/ClientControllers.js"></script>
 <script type="text/javascript"
 	src="assets/js/services/ClientProvider.js"></script>
+	
+	<!-- **** Conseiller **** -->
+<script type="text/javascript"
+	src="assets/js/controllers/ConseillerControllers.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/ConseillerProvider.js"></script>
+
+<!-- Style CSS globale-->
+<link href="assets/css/styleGlobal.css" rel="stylesheet" />
+
+
+<!-- Style CSS pour le header conseiller-->
+<link href="assets/css/styleHeaderConseiller.css" rel="stylesheet" />
+
+
 
 </head>
 <body ng-app="monApp">
 
-	
 
-	<nav class="navbar navbar-inverse">
-		<ul class="nav nav-pills">
-			<li role="presentation"><a href="#!listeProprio">Accueil</a></li>
-			<li role="presentation"><a href="#!ajouterProprio">ajouter
-					Propriétaire</a></li>
-			<li role="presentation"><a href="#!modifierProprio">Modifier
-					Propriétaire</a></li>
-			<li role="presentation"><a href="#!supprimerProprio">Supprimer
-					Propriétaire</a></li>
-			<li role="presentation"><a href="#!rechercherProprio">Rechercher
-					Propriétaire</a></li>
-			<li role="presentation"><a href="#!coClient">Connexion Client</a></li>
-			<li role="presentation"><a href="#!inscriptionClient">Inscription Client</a></li>
-			<li role="presentation"><a href="#!mapConseiller">Map Conseiller</a></li>
-					
-		</ul>
-	</nav>
 
 
 	<!-- Spécifier l'endroit de l'injection des vues -->
