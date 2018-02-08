@@ -77,14 +77,16 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		$scope.listeClients = callback;
 		console.log("list ok");
 		
+		// Récupération de la list des id des classeStd pour un id client
+		joinTableService.getIdClasseStd('2', function(callback) {
+			$scope.listIdClasse = callback;
+			console.log("liste des id classe :"+$scope.listIdClasse);
+		});
+		
+		
 	});
 	
 	
-	// Récupération de la list des id des classeStd pour un id client
-	joinTableService.getIdClasseStd('2', function(callback) {
-		$scope.listIdClasse = callback;
-		console.log("liste des id classe :"+$scope.listIdClasse);
-	});
 	
 
 	// fonction pour modifier grace au lien du tableau
