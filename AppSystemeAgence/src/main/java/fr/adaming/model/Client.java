@@ -47,7 +47,7 @@ public class Client implements Serializable {
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Contrat> contrats;
 
-	@JsonIgnore
+	
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "classes_clients", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
 	private List<ClasseStd> classesStd = new ArrayList<ClasseStd>();

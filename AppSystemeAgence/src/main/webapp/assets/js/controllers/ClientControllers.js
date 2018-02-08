@@ -68,14 +68,24 @@ monApp
 	};
 	})
 	
-monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope,$location) {
+monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$location,joinTableService) {
 
 	// appel de la méthode du service pour recuperer la liste du web service
 	clientService.findListeClient(function(callback) {
 
 		// Stocker la liste récupéré dans la variable listeProprio du scope
 		$scope.listeClients = callback;
+		console.log("list ok");
+		
 	});
+	
+	
+	// Récupération de la list des id des classeStd pour un id client
+	joinTableService.getIdClasseStd('2', function(callback) {
+		$scope.listIdClasse = callback;
+		console.log("liste des id classe :"+$scope.listIdClasse);
+	});
+	
 
 	// fonction pour modifier grace au lien du tableau
 	// initialiser l'objet  client dans le rootScope
