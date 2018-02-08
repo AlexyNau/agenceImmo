@@ -83,6 +83,17 @@
 
 #menu-demo2 li:nth-child(6) {
     background-color: #729EBF;
+    background-image: -webkit-linear-gradient(top, #5480a1 0%, #333A40 100%);
+    background-image: linear-gradient(to bottom, #5480a1 0%, #333A40 100%);
+}
+#menu-demo2 li:nth-child(7) {
+    background-color: #729EBF;
+    background-image: -webkit-linear-gradient(top, #5480a1 0%, #333A40 100%);
+    background-image: linear-gradient(to bottom, #5480a1 0%, #333A40 100%);
+}
+
+#menu-demo2 li:nth-child(8) {
+    background-color: #729EBF;
     background-image: -webkit-linear-gradient(top, #2ecc71 0%, #099042 100%);
     background-image: linear-gradient(to bottom, #2ecc71 0%, #099042 100%);
 }
@@ -112,6 +123,14 @@
     background: #333A40;
 }
 
+#menu-demo2 li:nth-child(7) li {
+    background: #333A40;
+}
+
+#menu-demo2 li:nth-child(8) li {
+    background: #333A40;
+}
+
 /* background des liens menus et sous menus au survol */
 #menu-demo2 li:first-child:hover, #menu-demo2 li:first-child li:hover {
     background: #65537A;
@@ -134,6 +153,14 @@
 }
 
 #menu-demo2 li:nth-child(6):hover, #menu-demo2 li:nth-child(4) li:hover {
+    background: #656c72;
+}
+
+#menu-demo2 li:nth-child(7):hover, #menu-demo2 li:nth-child(4) li:hover {
+    background: #656c72;
+}
+
+#menu-demo2 li:nth-child(8):hover, #menu-demo2 li:nth-child(4) li:hover {
     background: #656c72;
 }
 
