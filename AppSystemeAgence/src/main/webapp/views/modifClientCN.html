@@ -1,0 +1,82 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+<div class="col-sm-7 col-lg-offset-2"
+	style="position: relative; padding-top: 30px; padding-bottom: 30px; top: 50px; border-style: solid; border-width: 1px; border-color: grey; background-color: rgba(215, 215, 215, 0.8); border-radius: 25px;">
+
+	<h3 style="text-align: center; color: #406c8d">
+		<strong>Modifier un client :</strong>
+	</h3>
+
+
+	<!-- Formulaire de Modif -->
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">ID</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" id="id"
+					placeholder="ID du Client" ng-model="clientUpdate.id">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idNom" class="col-sm-2 control-label">Nom </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="idNom"
+					placeholder="Nom du client"
+					ng-model="clientUpdate.nom">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idTel" class="col-sm-2 control-label">Telephone</label>
+			<div class="col-sm-10">
+				<input type="tel" class="form-control" id="idTel"
+					placeholder="Numero de telephone"
+					ng-model="clientUpdate.telephone">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idNum" class="col-sm-2 control-label">Numero
+				de rue</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" id="idNum"
+					placeholder="Numero adresse client"
+					ng-model="clientUpdate.adresse.numero">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idRue" class="col-sm-2 control-label">Nom de rue</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="idRue"
+					placeholder="Rue clientt"
+					ng-model="clientUpdate.adresse.rue">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idVille" class="col-sm-2 control-label">Ville
+				</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="idVille"
+					placeholder="Ville"
+					ng-model="proprioUpdate.adresse.ville">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="idPays" class="col-sm-2 control-label">Pays
+				</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="idPays"
+					placeholder="Pays"
+					ng-model="clientUpdate.adresse.pays">
+			</div>
+		</div>
+		
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button class="btn btn-default" ng-click="updateProprio()">Modifier</button>
+			</div>
+		</div>
+	</form>
+
+</div>

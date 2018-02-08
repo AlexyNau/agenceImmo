@@ -29,6 +29,12 @@ monApp.config(function($routeProvider) {
 	}).when("/inscriptionClient",{
 		templateUrl:"views/inscription_client.html",
 		controller:"InscriptionClientCtrl"
+	}).when("/listeClient", {
+		templateUrl : "views/listeClientsCN.html",
+		controller : "findAllCtrlClient"
+	}).when("/modifierClient", {
+		templateUrl : "views/modifClientCN.html",
+		controller : "updateCtrlClient"
 	}).when("/mapConseiller",{
 		templateUrl:"views/map_conseiller.html",
 		controller:"mapCtrl"

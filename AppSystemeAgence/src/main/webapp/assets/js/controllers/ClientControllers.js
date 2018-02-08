@@ -67,6 +67,100 @@ monApp
 
 	};
 	})
+	
+monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope,$location) {
+
+	// appel de la méthode du service pour recuperer la liste du web service
+	clientService.findListeClient(function(callback) {
+
+		// Stocker la liste récupéré dans la variable listeProprio du scope
+		$scope.listeClients = callback;
+	});
+
+	// fonction pour modifier grace au lien du tableau
+	// initialiser l'objet  client dans le rootScope
+	$rootScope.clientUpdate={
+			id:undefined,
+			nom : '',
+			telephone : '',
+			mail : '',
+			   adresse:    {
+				      rue: '',
+				      numero: '',
+				      ville: '',
+				      pays: ''
+				   },
+			classesStd :{
+				code:'',
+				type_bien:'',
+				mode_offre:'',
+				prix_max:'',
+				sup_min:'',
+			}
+	}
+	//la fonction appelée a partir de la liste
+	$scope.modifierLien = function(client) {
+		//stocker les données du client récupéré dans le rootScope
+		$rootScope.clientUpdate=client;
+		//rediriger vers la vue modif
+		$location.path("modifierClient");
+	}
+	
+	// fonction pour supprimer grace au lien du tableau
+	$scope.supprimerLien = function(client) {
+		clientService.supClient(client.id, function(callbackDelete) {
+			if (callbackDelete == 'OK') {
+				// appel de la méthode du service pour recuperer la liste du web
+				// service
+				clientService.findListeClient(function(callbackList) {
+
+					// Stocker la liste récupéré dans la variable listeProprio du
+					// scope
+					$scope.listeClients = callbackList;
+				});
+			}
+		})
+	}
+
+})
+.controller("updateCtrlClient", function($scope, clientService, $location,$rootScope) {
+	
+	if($rootScope.clientUpdate.id==undefined){
+		// initialiser le proprio du formulaire à ajouter
+		$scope.clientUpdate = {
+				id:'',
+				nom : '',
+				telephone : '',
+				mail : '',
+				   adresse:    {
+					      rue: '',
+					      numero: '',
+					      ville: '',
+					      pays: ''
+					   },
+					classesStd :{
+						code:'',
+						type_bien:'',
+						mode_offre:'',
+						prix_max:'',
+						sup_min:'',
+		}
+	};	
+	}else{
+		$scope.clientModif=$rootScope.clientUpdate
+	}
+
+	// fonction pour soumettre le client a modif
+	$scope.updateClient = function() {
+		// appel de la méthode du service pour recuperer la liste du web service
+		clientService.modifClient($scope.clientUpdate, function(callback) {
+			if (callback == 'OK') {
+				// la redirection pour recharger la new liste
+				$location.path("listeClient");
+			}
+		});
+	};
+})
 
 .controller("mapCtrl", function($scope, clientService, $location) {
 

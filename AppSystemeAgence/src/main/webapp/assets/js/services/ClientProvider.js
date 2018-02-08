@@ -5,8 +5,7 @@ monApp.factory("clientService",['$http','$cookieStore','$rootScope','$timeout' ,
 	
 	function connexion(username,mdp,callback){	
 		var clientCookie='';	
-		/*mdp='c';
-		username='c@c'*/
+		
 		console.log(urlWS+'logClient/'+username +'/'+mdp)
 		$http({
 			method: 'GET',
@@ -23,7 +22,7 @@ monApp.factory("clientService",['$http','$cookieStore','$rootScope','$timeout' ,
 			console.log("---- Erreur du serveur pour co: "+reponse.status+" "+reponse.statusText)
 		});	
 		
-	}
+	};
 	
 	function ajouterClient(ajoutClient,callback){	
 	
@@ -41,12 +40,79 @@ monApp.factory("clientService",['$http','$cookieStore','$rootScope','$timeout' ,
 			console.log("---- Erreur du serveur pour ajout client: "+reponse.status+" "+reponse.statusText)
 		});	
 		
-	}
+	};
+	
+	// Fonction pour récupérer la liste des client
+	function recupListeClient(callback){
+		
+		$http({
+			 method: 'GET',//la methode http
+			 
+			  url: urlWS+'listeClient' //url de la methode WS
+			}).then(function success(reponse) {
+			   
+				//stocker la reponse dans la callback afin de la transporter au controller
+				  callback(reponse.data);
+				  
+			  }, function erreur(reponse) {
+				
+				  console.log("****erreur du serveur pour la liste clients: "+reponse.status+" "+reponse.statusText)
+				  
+			  });
+	};
+	
+	// Fonction pour modifier le client
+	function updateClient(clientUpdate,callback) {
+		
+		//appel du WS grace au service $Http
+		$http({
+			method:'PUT',
+			url:urlWS+'modifierClient',
+			data:angular.toJson(clientUpdate),// les données encapsulées dans le corps de la requete http
+			headers:{ //configuration des headers
+				'content-type':"application/json"
+			}
+		}).then(function success(reponse) {
+			   
+			//stocker la reponse dans la callback afin de la transporter au controller
+			  callback(reponse.statusText);
+			  
+		  }, function erreur(reponse) {
+			
+			  console.log("****erreur du serveur pour la modification: "+reponse.status+" "+reponse.statusText)
+			  
+		  });
+	};
+
+
+	//developpement de la fonction pour supprimer le propriétaire
+	function deleteClient(id,callback) {
+		
+		//appel du WS grace au service $Http
+		$http({
+			method:'DELETE',
+			url:urlWS+'deleteClient/'+id,
+			
+		}).then(function success(reponse) {
+			   
+			//stocker la reponse dans la callback afin de la transporter au controller
+			  callback(reponse.statusText);
+			  
+		  }, function erreur(reponse) {
+			
+			  console.log("****erreur du serveur pour la supression: "+reponse.status+" "+reponse.statusText)
+			  
+		  });
+	};
 
 	
 	return{
 		connexionClient:connexion,
-		addClient:ajouterClient
+		addClient:ajouterClient,
+		findListeClient:recupListeClient,
+		modifClient:updateClient,
+		supClient:deleteClient
+		
 	}
 	
 	
