@@ -47,6 +47,9 @@ monApp.config(function($routeProvider) {
 	}).when("/listeLocation", {
 		templateUrl : "views/rechercheLocation.html",
 		controller : "findAllLocationCtrl"
+	}).when("/modifierVente", {
+		templateUrl : "views/modifierVenteCN.html",
+		controller : "updateVenteCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})

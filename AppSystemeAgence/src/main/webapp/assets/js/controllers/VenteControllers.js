@@ -38,4 +38,13 @@ monApp.controller("addVenteCtrl", function($scope, venteService,
 			}
 		})
 	}
+}).controller("updateVenteCtrl", function($scope, venteService, $location) {
+	$scope.modifierVente = function() {
+		venteService.updateVente(venteModif, function(callback) {
+			if (callback) {
+				// redirection vers la page d'accueil du conseiller
+				$location.path("listeProprio");
+			}
+		})
+	}
 })

@@ -27,10 +27,30 @@ monApp.factory("venteService", function($http) {
 				});
 	}
 	;
+	
+	function modifVente(venteModif, callback) {
+		$http({
+			method : 'PUT',
+			url : urlWS + 'vente',
+			data : angular.toJson(venteAjout),
+			header : {
+				'content-type' : 'application/json'
+			}
+		}).then(
+				function success(reponse) {
+					// stockage de la réponse dans le callback
+					callback(reponse.data);
+				},
+				function erreur(reponse) {
+					console.log("****erreur du serveur pour la modif de vente: "
+							+ reponse.status + " " + reponse.statusText)
+				});
+	}
 
 	return {
 		
-		addVente : ajoutVente
+		addVente : ajoutVente,
+		updateVente : modifVente
 	}
 
 });
