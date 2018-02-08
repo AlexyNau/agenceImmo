@@ -1,0 +1,55 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+<h1 style="text-align: center">
+	<strong>Liste biens à vendre :</strong>
+</h1>
+
+Statut du bien :
+<input type="text" ng-model="search.statut" />
+
+<div class="form-group">
+	<label for="idStatut" class="col-sm-2 control-label">Statut des
+		biens</label>
+	<div class="col-sm-4 col-sm-offset-4">
+		<select class="form-control" id="idStatut" ng-model="search.statut">
+			<option value="disponible" id="idRestauration">Disponible</option>
+			<option value="" id="idAll"></option>
+			<option value="disponible" id="idDispo">Disponible</option>
+			<option value="vendu" id="idVendu">Vendu</option>
+		</select>
+	</div>
+</div>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Numero</th>
+		<th style="text-align: center;">Rue</th>
+		<th style="text-align: center;">Ville</th>
+		<th style="text-align: center;">Pays</th>
+		<th style="text-align: center;">Date de publication</th>
+		<th style="text-align: center;">Date de disponibilite</th>
+		<th style="text-align: center;">Prix d'achat</th>
+		<th style="text-align: center;">Remise</th>
+		<th style="text-align: center;">Revenu Cadastral</th>
+		<th style="text-align: center;">Etat</th>
+		<th style="text-align: center;">Superficie</th>
+		<th style="text-align: center;">Type de bien</th>
+	</tr>
+
+	<tr ng-repeat="v in listeVente | filter:search">
+		<td>{{p.id}}</td>
+		<td>{{p.nom}}</td>
+		<td>{{p.numTelPrive}}</td>
+		<td>{{p.numTelTravail}}</td>
+		<td><button class="btn btn-success" ng-click="supprimerLien(p)">Supprimer</button>
+			|
+			<button class="btn btn-success" ng-click="modifierLien(p)">Modifier</button>
+		</td>
+	</tr>
+
+</table>

@@ -71,29 +71,15 @@ public class VenteDaoImpl implements IVenteDao {
 		s = sf.getCurrentSession();
 
 		// récupération de la vente existante
-//		Vente vOut = (Vente) s.get(Vente.class, vente.getId());
+		Vente vOut = (Vente) s.get(Vente.class, vente.getId());
 
 		// stockage de la vente modifiée dans la vente préexistante
-//		vOut.setAdresse(vente.getAdresse());
-//		vOut.setClasseStd(vente.getClasseStd());
-//		vOut.setContrat(vente.getContrat());
-//		vOut.setDateDisponibilite(vente.getDateDisponibilite());
-//		vOut.setDatePublication(vente.getDatePublication());
-//		vOut.setEtat(vente.getEtat());
-//		vOut.setImage(vente.getImage());
-//		vOut.setPhoto(vente.getPhoto());
-//		vOut.setPrixAchat(vente.getPrixAchat());
-//		vOut.setProprietaire(vente.getProprietaire());
-//		vOut.setRemise(vente.getRemise());
-//		vOut.setRevenuCadastral(vente.getRevenuCadastral());
-//		vOut.setStatut(vente.getStatut());
-//		vOut.setVisites(vente.getVisites());
-//		vOut.setSuperficie(vente.getSuperficie());
+		vOut.setStatut("vendu");
 
 		// modification de la vente dans la base de données
-		s.saveOrUpdate(vente);
+		s.saveOrUpdate(vOut);
 
-		return vente;
+		return vOut;
 	}
 
 	/**
