@@ -1,0 +1,177 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+<div class="col-sm-7 col-lg-offset-2"
+	style="position: relative; padding-top: 30px; padding-bottom: 30px; top: 50px; border-style: solid; border-width: 1px; border-color: grey; background-color: rgba(215, 215, 215, 0.8); border-radius: 25px;">
+
+
+<h3 style="text-align: center; color: #406c8d">
+		<strong>Ajouter un bien a louer :</strong>
+	</h3>
+
+<!-- Formulaire d'ajout -->
+<form class="form-horizontal">
+
+	<div class="form-group">
+		<label for="idProp" class="col-sm-2 control-label">ID du
+			proprietaire</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idProp"
+				ng-model="locationAjout.proprietaire.id">
+				<option value="{{proprietaire.id}}" id="idProprio" ng-repeat="proprietaire in listeProprietaires">{{proprietaire.id}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idTypeBien" class="col-sm-2 control-label">Type de
+			bien</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idTypeBien"
+				ng-model="locationAjout.classeStd.type_bien">
+				<option value="appartement" id="idAppart">Appartement</option>
+				<option value="studio" id="idStudio">Studio</option>
+				<option value="maison" id="idMaison">Maison</option>
+				<option value="entrepot" id="idEntrepot">Entrepot</option>
+				<option value="emplacement" id="idEmplacement">Emplacement</option>
+				<option value="terrain" id="idTerrain">Terrain</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idNum" class="col-sm-2 control-label">Numero de
+			rue :</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idNum"
+				placeholder="Numero de rue" ng-model="locationAjout.adresse.numero">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idRue" class="col-sm-2 control-label">Rue :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idRue" placeholder="Rue"
+				ng-model="locationAjout.adresse.rue">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idVille" class="col-sm-2 control-label">Ville :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idVille"
+				placeholder="Ville" ng-model="locationAjout.adresse.ville">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idPays" class="col-sm-2 control-label">Pays :</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="idPays"
+				placeholder="Pays" ng-model="locationAjout.adresse.pays">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idDatePubli" class="col-sm-2 control-label">Date
+			de publication :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDatePubli"
+				placeholder="Date de soumission du bien"
+				ng-model="locationAjout.datePublication">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idDateDispo" class="col-sm-2 control-label">Date
+			de disponibilite :</label>
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="idDateDispo"
+				placeholder="Date de disponibilite du bien"
+				ng-model="locationAjout.dateDisponibilite">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idRemise" class="col-sm-2 control-label">Remise</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idRemise"
+				placeholder="Remise effectuee sur le bien"
+				ng-model="locationAjout.remise">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idBail" class="col-sm-2 control-label">Bail</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idBail"
+				placeholder="Bail (en annees)"
+				ng-model="locationAjout.bail">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idCaution" class="col-sm-2 control-label">Caution</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idCaution"
+				placeholder="Montant de la caution"
+				ng-model="locationAjout.caution">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idCharges" class="col-sm-2 control-label">Charges</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idCharges"
+				placeholder="Montant des charges"
+				ng-model="locationAjout.charges">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idLoyer" class="col-sm-2 control-label">Loyer</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idLoyer"
+				placeholder="Montant du loyer"
+				ng-model="locationAjout.loyer">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="idEtat" class="col-sm-2 control-label">Garniture</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idEtat" ng-model="locationAjout.garniture">
+				<option value="true" id="idMeuble">Meuble</option>
+				<option value="false" id="idVide">Non Meuble</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="idSuperficie" class="col-sm-2 control-label">Superficie</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="idSuperficie"
+				placeholder="Superficie du bien"
+				ng-model="locationAjout.superficie">
+		</div>
+	</div>
+	
+	   <div class="row">
+				<div class="input-field col-sm-12">
+					<input type="file" id="selectedFile"
+						ng-model="locationAjout.image" accept="image/*"
+						class="form-control" base-sixty-four-input> 
+				</div>
+		</div>
+		<input type="button" ng-click="affiche()" value="Afficher image">
+		<img ng-src="data:image/JPEG;base64,{{locationAjout.photo}}"
+					style="max-height: 150px; max-width: 150px">
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="ajouterLocation()">Ajouter</button>
+		</div>
+	</div>
+</form>
+
+</div>
