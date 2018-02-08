@@ -162,10 +162,12 @@ monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope
 	};
 })
 
-.controller("mapCtrl", function($scope, clientService, $location) {
+.controller("mapCtrl", function($scope,$rootScope, clientService, $location) {
 
 		$scope.rechercheZone='france';
-		
+		$scope.msg1="TEST";
+		$scope.msg="";
+		$rootScope.bien='';
 		var adresse=["24 rue crebillon nantes",
 				"Parc des Chantiers, Boulevard Léon Bureau, 44200 Nantes",
 				"1 Quai du Cordon Bleu, 44100 Nantes",
@@ -185,9 +187,7 @@ monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope
 	          zoom: 8
 	          
 	          
-	        });*/
-		
-	        
+	        });*/        
 			   $scope.map = new GMaps({
 			    el: '#map',
 			    lat: 47.5073346,
@@ -196,19 +196,30 @@ monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope
 			   
 			  });
 
-
+	function affiche_bien(bien){
+		 alert("TEST="+bien.nom+" / "+bien.prenom);
+		 $scope.msg="CLICK";
+		// $rootScope.bien=bien;
+		 console.log("AFFICHAGE BIEN === "+$scope.bien.prenom);
+		
+	}		   
 		
 	$scope.rechercher=function(){
 			   
-		 console.log("Initialize")
-		 
+		 console.log("Initialize")	
+
 		 $scope.map = new GMaps({
 			    el: '#map',
 			    lat: 47.5073346,
 			    lng: -1.5276831,
 			    zoom:7, 
 			   
-			  });		 		
+			  })
+		 
+		 /* marker.addListener('click', function() {
+	          map.setZoom(8);
+	          map.setCenter(marker.getPosition());
+	        });*/
 		
 	console.log("Recherche="+$scope.rechercheZone);
 	var positionRecup='';
@@ -242,8 +253,9 @@ monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope
 		        		console.log("Position==="+positionRecup)
 		        		console.log("latitude["+i+"]="+latitude[i]+" / longitude["+i+"]="+longitude[i])
 		        		console.log("Adresse :"+adresse[i] +"/ ")
-		        		ajoutMarker(i,latitude[i],longitude[i],adresse[i]);	
-
+		        		var bien={nom:i,prenom:adresse}
+		        		ajoutMarker(i,latitude[i],longitude[i],adresse[i-6],bien);	
+		        		i++
 	
 		        	}//fin if geocoder2		        	
 		        	
@@ -257,22 +269,42 @@ monApp.controller("findAllCtrlClient", function($scope, clientService,$rootScope
 		  })
 		}//fin for
 		
-
 		
-		function ajoutMarker(i,lat,lg,adresse){
+		
+		function ajoutMarker(i,lat,lg,adresse,bien){
+			console.log(bien)
+			var lol=adresse
 			console.log("i="+i+" //// Ajout Marker lat="+lat)
+			 /* var marker = new google.maps.Marker({
+	  			   lat: lat,
+				   lng: lg,	
+				   map: $scope.map,
+				   title: 'Click to zoom'
+			  });*/
 			 $scope.map.addMarker({   			
   			   lat: lat,
-			    lng: lg,	
-  				title:adresse
-  			})
+			   lng: lg,	
+			   id:i,
+			   url:bien.nom+"/"+bien.prenom,
+  			   title:adresse+" / "+i,
+  			   click:function(e){
+  				   
+  				  
+  				   affiche_bien(bien);
+  				   
+  			   }
+  			})/*.addlistener('click', function() {
+  	          $scope.map.setZoom(8);
+  	          $scope.map.setCenter(marker.getPosition());
+  	        });*/
 	
-			
-
-	  }//fin scope function	
+		} //fin scope recherche function	
 		
 		
 		$scope.rechercher();
+		
+		
+		
 		
 		
 	});
