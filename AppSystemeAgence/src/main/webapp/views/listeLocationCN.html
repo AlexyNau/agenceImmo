@@ -1,0 +1,75 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+<h1 style="text-align: center">
+	<strong>Liste biens en location :</strong>
+</h1>
+
+<div class="col-sm-7 col-lg-offset-2"
+	style="position: relative; padding-top: 20px; padding-bottom: 20px; top: 30px; border-style: solid; border-width: 1px; border-color: grey; background-color: rgba(215, 215, 215, 0.8); border-radius: 25px;margin-bottom: 50px">
+	<div class="form-group">
+		<label for="idStatut" class="col-sm-2 control-label">Statut
+			des biens</label>
+		<div class="col-sm-4 col-sm-offset-4">
+			<select class="form-control" id="idStatut" ng-model="search.statut">
+				<option value="" id="idAll">Tous</option>
+				<option value="disponible" id="idDispo">Disponible</option>
+				<option value="loue" id="idVendu">Loue</option>
+			</select>
+		</div>
+	</div>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Statut</th>
+		<th style="text-align: center;">Numero</th>
+		<th style="text-align: center;">Rue</th>
+		<th style="text-align: center;">Ville</th>
+		<th style="text-align: center;">Pays</th>
+		<th style="text-align: center;">Date de publication</th>
+		<th style="text-align: center;">Date de disponibilite</th>
+		<th style="text-align: center;">Remise</th>
+		<th style="text-align: center;">Revenu Cadastral</th>
+		<th style="text-align: center;">Bail</th>
+		<th style="text-align: center;">Caution</th>
+		<th style="text-align: center;">Charges</th>
+		<th style="text-align: center;">Loyer</th>
+		<th style="text-align: center;">Garniture</th>
+		<th style="text-align: center;">Superficie</th>
+		<th style="text-align: center;">Type de bien</th>
+		<th style="text-align: center;">Photo</th>
+	</tr>
+
+	<tr ng-repeat="l in listeLocation | filter:search">
+		<td>{{l.id}}</td>
+		<td>{{l.statut}}</td>
+		<td>{{l.numero}}</td>
+		<td>{{l.rue}}</td>
+		<td>{{l.ville}}</td>
+		<td>{{l.pays}}</td>
+		<td>{{l.datePublication}}</td>
+		<td>{{l.dateDisponibilite}}</td>
+		<td>{{l.remise}}</td>
+		<td>{{l.revenuCadastral}}</td>
+		<td>{{l.bail}}</td>
+		<td>{{l.caution}}</td>
+		<td>{{l.charges}}</td>
+		<td>{{l.loyer}}</td>
+		<td ng-if="l.garniture">Meuble</td>
+		<td ng-if="!l.garniture">Non Meuble</td>
+		<td>{{l.superficie}}</td>
+		<td>{{l.classeStd.type_bien}}</td>
+		<td><img ng-src="data:image/JPEG;base64,{{l.photo}}"
+					style="max-height: 70px; max-width: 70px"></td>
+	</tr>
+
+</table>

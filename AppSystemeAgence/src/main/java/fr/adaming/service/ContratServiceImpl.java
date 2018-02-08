@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IClientDao;
 import fr.adaming.dao.IContratDao;
+import fr.adaming.dao.ILocationDao;
+import fr.adaming.dao.IVenteDao;
 import fr.adaming.model.Contrat;
 
 @Service
@@ -15,6 +18,14 @@ public class ContratServiceImpl implements IContratService {
 
 	@Autowired
 	private IContratDao contratDao;
+	
+	@Autowired
+	private IClientDao clientDao;
+	
+	@Autowired
+	private ILocationDao locDao;
+	
+	private IVenteDao venteDao;
 
 	@Override
 	public List<Contrat> getAllContrats() {
@@ -29,7 +40,13 @@ public class ContratServiceImpl implements IContratService {
 	}
 
 	@Override
-	public Contrat addContrat(Contrat contrat) {
+	public Contrat addContratLocation(Contrat contrat, int idClient, int idLocation) {
+
+		return contratDao.addContrat(contrat);
+	}
+	
+	@Override
+	public Contrat addContratVente(Contrat contrat, int idClient, int idVente) {
 
 		return contratDao.addContrat(contrat);
 	}

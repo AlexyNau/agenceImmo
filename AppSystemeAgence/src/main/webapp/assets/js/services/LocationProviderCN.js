@@ -45,9 +45,26 @@ monApp.factory("locationServiceCN", function($http) {
 				});
 	};
 	
+	function recupListe(callback){
+		$http({
+			method : 'GET', // méthode Http
+			url : urlWS + 'listeLocations' // url de la méthode du webservice
+		}).then(function success(reponse) {
+			// stocker la réponse dans le callback afin de la
+			// transporter au controller
+			callback(reponse.data);
+
+		},
+		function failure(reponse) {
+			console.log("------- Erreur du serveur (liste) "
+					+ reponse.status + " " + reponse.statusText);
+		});
+	};
+	
 return {
 		
 		addLocation : ajoutLocation,
-		updateLocation : modifLocation
+		updateLocation : modifLocation,
+		getListeLocations : recupListe
 	}
 })

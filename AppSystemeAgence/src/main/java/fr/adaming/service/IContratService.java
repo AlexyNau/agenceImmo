@@ -10,7 +10,9 @@ public interface IContratService {
 
 	public Contrat getContratById(int id);
 
-	public Contrat addContrat(Contrat contrat);
+	public Contrat addContratLocation(Contrat contrat, int idClient, int idLocation);
+	
+	public Contrat addContratVente(Contrat contrat, int idClient, int idVente);
 
 	public Contrat updateContrat(Contrat contrat);
 

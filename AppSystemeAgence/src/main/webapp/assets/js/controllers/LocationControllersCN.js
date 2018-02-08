@@ -1,4 +1,11 @@
-monApp.controller("addLocationCtrl", function($scope, locationServiceCN,
+monApp.controller("findAllLocationCtrl", function($scope, locationServiceCN) {
+	//appel de la méthode service
+	locationServiceCN.getListeLocations(function(callback) {
+		$scope.listeLocation = callback;
+	})
+})
+
+.controller("addLocationCtrl", function($scope, locationServiceCN,
 		proprioService, $location) {
 	// initialisation de la vente du formulaire à ajouter
 	$scope.locationAjout = {
