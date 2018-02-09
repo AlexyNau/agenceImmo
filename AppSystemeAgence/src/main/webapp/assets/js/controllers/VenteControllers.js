@@ -77,7 +77,9 @@ monApp.controller("findAllVenteCtrl", function($scope, venteService) {
 	$scope.ajouterContrat = function() {
 		venteService.updateVente($scope.contratAjout.vente, function(callback) {
 		})
+		
 		venteService.addContrat($scope.contratAjout, function(callback) {
+			console.log($scope.contratAjout);
 			if(callback){
 				$location.path("listeProprio");
 			}

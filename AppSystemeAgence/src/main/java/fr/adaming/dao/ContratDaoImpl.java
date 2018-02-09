@@ -55,6 +55,7 @@ public class ContratDaoImpl implements IContratDao {
 		public Contrat addContrat(Contrat contrat) {
 			
 			s = sf.getCurrentSession();
+			System.out.println("-----------------contrat dao"+contrat);
 			s.save(contrat);
 			return contrat;
 		}

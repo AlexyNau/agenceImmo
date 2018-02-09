@@ -62,7 +62,7 @@ monApp.factory("venteService", function($http) {
 					callback(reponse.data);
 				},
 				function erreur(reponse) {
-					console.log("****erreur du serveur pour l'ajout de vente: "
+					console.log("****erreur du serveur pour l'ajout de contrat: "
 							+ reponse.status + " " + reponse.statusText)
 				});
 	};

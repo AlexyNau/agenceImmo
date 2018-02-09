@@ -28,6 +28,7 @@ public class ContratServiceImpl implements IContratService {
 	@Autowired
 	private ILocationDao locDao;
 	
+	@Autowired
 	private IVenteDao venteDao;
 
 	@Override

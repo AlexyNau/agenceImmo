@@ -19,6 +19,10 @@ public class ContratRest {
 	@Autowired
 	private IContratService contratService;
 
+	public void setContratService(IContratService contratService) {
+		this.contratService = contratService;
+	}
+
 	@RequestMapping(value = "/listeContrat", method = RequestMethod.GET, produces = "application/json")
 	public List<Contrat> getAllContrat() {
 		return contratService.getAllContrats();
