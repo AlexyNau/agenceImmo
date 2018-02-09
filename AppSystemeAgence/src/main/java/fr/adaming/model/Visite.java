@@ -31,17 +31,17 @@ public class Visite implements Serializable {
 	@JoinColumn(name = "id_conseiller", referencedColumnName = "id_conseiller")
 	private Conseiller conseiller;
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
 	private Client client;
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "id_vente", referencedColumnName = "id_vente")
 	private Vente vente;
 
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "id_location", referencedColumnName = "id_l")
 	private Location location;

@@ -15,7 +15,7 @@ monApp.factory("visiteService",function($http){
 			 
 			  url: urlWS+'listeVisite' //url de la methode WS
 			}).then(function success(reponse) {
-			   
+			   console.log("****liste visite"+reponse.data)
 				//stocker la reponse dans la callback afin de la transporter au controller
 				  callback(reponse.data);
 				  
@@ -33,7 +33,7 @@ function ajoutVisite(visiteAjout,callback) {
 	$http({
 		method:'POST',
 		url:urlWS+'addVisite',
-		data:angular.toJson(proprioAjout),// les données encapsulées dans le corps de la requete http
+		data:angular.toJson(visiteAjout),// les données encapsulées dans le corps de la requete http
 		headers:{ //configuration des headers
 			'content-type':"application/json"
 		}
@@ -57,7 +57,7 @@ function updateVisite(visiteUpdate,callback) {
 	$http({
 		method:'PUT',
 		url:urlWS+'modifierVisite',
-		data:angular.toJson(proprioUpdate),// les données encapsulées dans le corps de la requete http
+		data:angular.toJson(visiteUpdate),// les données encapsulées dans le corps de la requete http
 		headers:{ //configuration des headers
 			'content-type':"application/json"
 		}
@@ -74,7 +74,7 @@ function updateVisite(visiteUpdate,callback) {
 };
 
 
-//developpement de la fonction pour supprimer le propriétaire
+//developpement de la fonction pour supprimer la visite
 function deleteVisite(id,callback) {
 	
 	//appel du WS grace au service $Http
@@ -94,7 +94,7 @@ function deleteVisite(id,callback) {
 	  });
 };
 
-//developpement de la fonction pour rechercher un proprietaire
+//developpement de la fonction pour rechercher une visite
 function searchVisite(id,callback) {
 	
 	//appel du WS grace au service $Http
