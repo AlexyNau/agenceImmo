@@ -86,7 +86,7 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 			// Récupération de la list des id des classeStd pour un id client
 			joinTableService.getIdClasseStd(client.id, function(callback) {
 				
-				console.log(callback);
+				
 				if(callback){
 					$scope.listIdClass.push(callback);
 				}
