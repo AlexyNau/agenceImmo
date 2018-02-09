@@ -70,7 +70,6 @@ monApp.controller("findAllLocationCtrl", function($scope, locationServiceCN) {
 	})
 	
 	$scope.ajouterContrat = function() {
-		locationServiceCN.updateLocation($scope.contratAjout.location, function(callback) {})
 		locationServiceCN.addContrat($scope.contratAjout, function(callback) {
 			console.log($scope.contratAjout);
 			if(callback){
