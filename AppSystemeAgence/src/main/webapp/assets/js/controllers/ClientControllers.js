@@ -254,7 +254,10 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		$scope.msg="";
 		$rootScope.bien='';
 		$scope.bien_map_bol=false;
-		
+		$scope.bien_map_bol2=false;
+		console.log("init $rootScope.bien_map_bol="+$rootScope.bien_map_bol)
+		$scope.x_coord='300px';
+		$scope.y_coord='300px';
 		// Liste de location
 		locationService.findListeLocation(function(callback) {
 			$scope.listeLocation = callback;
@@ -270,18 +273,25 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 				"5 Rue des Prouvaires, 75001 Paris",
 				"Place Charles de Gaulle, 75008 Paris"
 		];
+		
+		document.body.onmousemove = function(e) {
+			  // suivi de la position de la souris dans la console
+			  console.log("Position de la souris :  X=" + e.clientX + "   Y="+e.clientY);
+				$scope.$apply(function() {
+					  $scope.x_coord=e.clientX+'px';
+					  $scope.y_coord=e.clientY+'px';
+		 		});
 
-	
-	
+			}
+
+
 		geocoder1 = new google.maps.Geocoder();
 		geocoder2 = new google.maps.Geocoder();
 		
 		/*$scope.map=new google.maps.Map(document.getElementById('map'), {
 	          center: {lat: -34.397, lng: 150.644},
-	          zoom: 8
-	          
-	          
-	        });*/        
+	          zoom: 8        
+	      });*/        
 			   $scope.map = new GMaps({
 			    el: '#map',
 			    lat: 47.5073346,
@@ -307,6 +317,13 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 	    	 $scope.$apply(function() {
 	    		  $location.path('/afficheBien');
 	    		});
+	     }
+	     
+	     function affiche_survol(){
+	    	 $scope.$apply(function() {
+	    		 $scope.bien_map_bol2=true
+	    		});
+	    	 console.log("Affiche :"+$scope.bien_map_bol2)
 	     }
 		
 	$scope.rechercher=function(){
@@ -406,10 +423,16 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
   				   $scope.affiche_bien(bien,i); 				   
   			   },
 			 	mouseover:function(e){
-				   
 			 		$scope.bien_map=bien
-			 		$scope.bien_map_bol=true
-			 		console.log("mouse OVER !!!!!!!!!!!!"+ $scope.bien_map_bol)
+
+			 		$rootScope.bien_map_bol=true
+			 		console.log("mouse OVER !!!!!!!!!!!!"+$scope.x_coord)
+			 		
+			 		$scope.$apply(function() {
+			 			
+				 		$scope.test=e
+			 		});
+			 		affiche_survol();
 			   }
   			})/*.addlistener('click', function() {
   	          $scope.map.setZoom(8);
