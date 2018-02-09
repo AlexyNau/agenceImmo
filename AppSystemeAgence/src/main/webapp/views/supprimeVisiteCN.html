@@ -1,0 +1,23 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="id" class="col-sm-2 control-label" style="color: white">ID</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" id="id"
+				placeholder="ID de la visite a supprimer" ng-model="id">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="deleteVisite()">Supprimer</button>
+		</div>
+	</div>
+</form>
