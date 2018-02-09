@@ -44,7 +44,7 @@ monApp.controller("findAllVisiteCtrl",
 				$location.path("modifierVisite");
 			}
 			
-			// fonction pour supprimer grace au lien du tableau
+			// fonction pour ajouter grace au lien dessus tableau
 			$scope.ajouterVLien = function() {
 				
 				$location.path("ajouterVisite");
@@ -71,7 +71,7 @@ monApp.controller("findAllVisiteCtrl",
 			}
 
 		})// ***** Controller ajout d'une visite *****
-.controller("visiteAddCtrl", function($scope, visiteService, $location) {
+.controller("visiteAddCtrl", function($scope, visiteService, $location,clientService,venteService,locationServiceCN) {
 
 	$scope.visiteAjout = {
 		
@@ -90,12 +90,25 @@ monApp.controller("findAllVisiteCtrl",
 			prixAchat : ''
 		}
 	}
-
+	// récupérer la liste des Client
+	clientService.findListeClient(function(callback) {
+		$scope.listeClients = callback;
+	})
+	
+	//appel de la méthode service Vente
+	venteService.getListe(function(callback) {
+		$scope.listeVente = callback;
+	})
+	
+	//appel de la méthode service pour Location
+	locationServiceCN.getListeLocations(function(callback) {
+		$scope.listeLocation = callback;
+	})
 	// fonction pour soumettre la visite a ajouter
 	$scope.ajouterVisite = function() {
 		// appel de la méthode du service pour recuperer la liste du web service
 		visiteService.addVisite($scope.visiteAjout, function(callback) {
-
+console.log("********:"+$scope.visiteAjout)
 			if (callback == 'OK') {
 				// la redirection pour recharger la new liste
 				$location.path("listeVisite");
