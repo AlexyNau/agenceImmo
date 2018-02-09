@@ -1,0 +1,52 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+<h1 style="text-align: center">
+	<strong>Liste des contrats de vente :</strong>
+</h1>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Date de realisation du contrat</th>
+		<th style="text-align: center;">Prix d'achat</th>
+		<th style="text-align: center;">ID du bien achete</th>
+		<th style="text-align: center;">ID de l'acquereur</th>
+	</tr>
+
+	<tr ng-repeat="c in listeContratVente">
+		<td>{{c.id}}</td>
+		<td>{{c.date}}</td>
+		<td>{{c.prix}}</td>
+		<td>{{c.vente.id}}</td>
+		<td>{{c.client.id}}</td>
+	</tr>
+
+</table>
+
+<h1 style="text-align: center">
+	<strong>Liste des contrats de location :</strong>
+</h1>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Date de realisation du contrat</th>
+		<th style="text-align: center;">Montant mensuel verse</th>
+		<th style="text-align: center;">ID du bien loue</th>
+		<th style="text-align: center;">ID du locataire</th>
+	</tr>
+
+	<tr ng-repeat="c in listeContratLocation">
+		<td>{{c.id}}</td>
+		<td>{{c.date}}</td>
+		<td>{{c.prix}}</td>
+		<td>{{c.location.id}}</td>
+		<td>{{c.client.id}}</td>
+	</tr>
+
+</table>

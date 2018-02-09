@@ -6,7 +6,9 @@ import fr.adaming.model.Contrat;
 
 public interface IContratService {
 
-	public List<Contrat> getAllContrats();
+	public List<Contrat> getAllContratsVente();
+	
+	public List<Contrat> getAllContratsLocation();
 
 	public Contrat getContratById(int id);
 

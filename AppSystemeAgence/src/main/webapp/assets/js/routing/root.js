@@ -85,7 +85,10 @@ monApp.config(function($routeProvider) {
 		controller : "findAllLocationCtrl"
 	}).when("/afficheBien", {
 		templateUrl : "views/afficheBien.html",
-		controller : "AfficheBienCtrl"
+		controller : "AfficheBienCtrl"			
+	}).when("/afficheListeContrat", {
+		templateUrl : "views/listeContratCN.html",
+		controller : "findAllContratCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})

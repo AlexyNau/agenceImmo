@@ -1,5 +1,6 @@
 package fr.adaming.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,33 @@ public class ContratServiceImpl implements IContratService {
 	private IVenteDao venteDao;
 
 	@Override
-	public List<Contrat> getAllContrats() {
+	public List<Contrat> getAllContratsVente() {
+		List<Contrat> listOut = contratDao.getAllContrats();
+		List<Contrat> listIn = new ArrayList<Contrat>();
+		
+		for (Contrat element : listOut) {
+			if (element.getVente()!=null) {
+				listIn.add(element);
+			}
+		}
+		
 
-		return contratDao.getAllContrats();
+		return listIn;
+	}
+	
+	@Override
+	public List<Contrat> getAllContratsLocation() {
+		List<Contrat> listOut = contratDao.getAllContrats();
+		List<Contrat> listIn = new ArrayList<Contrat>();
+		
+		for (Contrat element : listOut) {
+			if (element.getLocation()!=null) {
+				listIn.add(element);
+			}
+		}
+		
+
+		return listIn;
 	}
 
 	@Override

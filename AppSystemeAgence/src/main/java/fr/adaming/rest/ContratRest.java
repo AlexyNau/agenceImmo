@@ -23,9 +23,14 @@ public class ContratRest {
 		this.contratService = contratService;
 	}
 
-	@RequestMapping(value = "/listeContrat", method = RequestMethod.GET, produces = "application/json")
-	public List<Contrat> getAllContrat() {
-		return contratService.getAllContrats();
+	@RequestMapping(value = "/listeContratVente", method = RequestMethod.GET, produces = "application/json")
+	public List<Contrat> getAllContratVente() {
+		return contratService.getAllContratsVente();
+	}
+	
+	@RequestMapping(value = "/listeContratLocation", method = RequestMethod.GET, produces = "application/json")
+	public List<Contrat> getAllContratVenteLocation() {
+		return contratService.getAllContratsLocation();
 	}
 
 	@RequestMapping(value = "/contrat/{pId}", method = RequestMethod.GET, produces = "application/json")
