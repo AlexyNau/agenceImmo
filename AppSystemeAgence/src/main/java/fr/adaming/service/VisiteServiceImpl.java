@@ -6,7 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IClientDao;
+import fr.adaming.dao.ILocationDao;
+import fr.adaming.dao.IVenteDao;
 import fr.adaming.dao.IVisiteDao;
+import fr.adaming.model.Client;
+import fr.adaming.model.Location;
+import fr.adaming.model.Vente;
 import fr.adaming.model.Visite;
 
 @Service
@@ -15,6 +21,15 @@ public class VisiteServiceImpl implements IVisiteService {
 
 	@Autowired
 	private IVisiteDao visiteDao;
+	
+	@Autowired
+	private IClientDao clientDao;
+	
+	@Autowired
+	private ILocationDao locationDao;
+	
+	@Autowired
+	private IVenteDao venteDao;
 
 	@Override
 	public Visite getVisiteById(int id) {
@@ -23,8 +38,16 @@ public class VisiteServiceImpl implements IVisiteService {
 	}
 
 	@Override
-	public Visite addVisite(Visite visite) {
-
+	public Visite addVisite(Visite visite,int idClient,int idLocation,int idVente) {
+		
+		Client client = clientDao.getClientById(idClient);
+		Location location=locationDao.getLocationById(idLocation);
+		Vente vente=venteDao.getVenteById(idVente);
+		
+		visite.setClient(client);
+		visite.setLocation(location);
+		visite.setVente(vente);
+		
 		return visiteDao.addVisite(visite);
 	}
 

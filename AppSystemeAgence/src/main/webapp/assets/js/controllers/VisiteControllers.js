@@ -43,6 +43,14 @@ monApp.controller("findAllVisiteCtrl",
 				// rediriger vers la vue modif
 				$location.path("modifierVisite");
 			}
+			
+			// fonction pour supprimer grace au lien du tableau
+			$scope.ajouterVLien = function() {
+				
+				$location.path("ajouterVisite");
+				
+			};
+			
 
 			// fonction pour supprimer grace au lien du tableau
 			$scope.supprimerVLien = function(visite) {
@@ -66,7 +74,7 @@ monApp.controller("findAllVisiteCtrl",
 .controller("visiteAddCtrl", function($scope, visiteService, $location) {
 
 	$scope.visiteAjout = {
-		conseiller : '',
+		
 		date : '',
 		client : '',
 		location : '',

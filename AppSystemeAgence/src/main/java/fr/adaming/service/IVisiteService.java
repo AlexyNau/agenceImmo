@@ -8,7 +8,7 @@ public interface IVisiteService {
 
 public Visite getVisiteById(int id);
 	
-	public Visite addVisite(Visite visite);
+	public Visite addVisite(Visite visite,int idClient,int idLocation,int idVente);
 	
 	public Visite updateVisite(Visite visite);
 	

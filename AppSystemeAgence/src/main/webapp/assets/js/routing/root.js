@@ -74,6 +74,9 @@ monApp.config(function($routeProvider) {
 	}).when("/listeVisite", {
 		templateUrl : "views/gestionVisiteCN.html",
 		controller : "findAllVisiteCtrl"
+	}).when("/ajouterVisite", {
+		templateUrl : "views/ajoutVisiteCN.html",
+		controller : "visiteAddCtrl"
 	}).when("/modifierVisite", {
 		templateUrl : "views/modifVisiteCN.html",
 		controller : "visiteUpdateCtrl"

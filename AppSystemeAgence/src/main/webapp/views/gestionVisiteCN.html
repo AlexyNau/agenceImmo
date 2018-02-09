@@ -10,22 +10,24 @@
 <table class="table table-bordered" style="text-align: center">
 
 	<tr>
-		<th>ID</th>
-		<th>Date</th>
-		<th>Client</th>
-		<th>Vente</th>
-		<th>Location</th>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Date et Heure</th>
+		<th style="text-align: center;">Client</th>
+		<th style="text-align: center;">Vente</th>
+		<th style="text-align: center;">Location</th>
 		
 		<th style="text-align: center;">Operations</th>
 	</tr>
 	<tr ng-repeat="visite in listeVisite">
 		<td>{{visite.id}}</td>
 		<td>{{visite.date|date:'yyyy/MM/dd HH:mm:ss'}}</td>
-		<td><p>id:</p>{{visite.client.id}} <p>nom:</p>{{visite.client.nom}} <p>Telephone:</p>{{visite.client.telephone}}</td>
-		<td><p>id:</p>{{visite.vente.id}} <p>Loyer:</p>{{visite.vente.prixAchat|currency}}</td>
-		<td><p>id:</p>{{visite.location.id}} <p>Loyer:</p>{{visite.location.loyer|currency}}</td>
+		<td><p>id:{{visite.client.id}}</p> <p>nom:{{visite.client.nom}}</p> <p>Telephone:{{visite.client.telephone}}</p></td>
+		<td><p ng-show="{{visite.vente.id}}">id:{{visite.vente.id}}</p> <p ng-show="{{visite.vente.prixAchat}}">Prix:{{visite.vente.prixAchat|currency}}</p></td>
+		<td><p ng-show="{{visite.location.id}}">id:{{visite.location.id}}</p> <p ng-show="{{visite.location.loyer}}">Loyer:{{visite.location.loyer|currency}}</p></td>
 		
 		<td><button class="btn btn-success" ng-click="supprimerVLien(visite)" >Supprimer</button> | <button class="btn btn-success" ng-click="modifierVLien(visite)" >Modifier</button> </td>
+		<h1><button class="btn btn-success" ng-click="ajouterVLien()" >Ajouter</button></h1>
 	</tr>
 
 </table>
+

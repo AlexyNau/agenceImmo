@@ -32,7 +32,7 @@ public class VisiteRest {
 	
 	@RequestMapping(value = "/addVisite", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Visite addVisite(@RequestBody Visite visite) {
-		return visiteService.addVisite(visite);
+		return visiteService.addVisite(visite,visite.getClient().getId(),visite.getLocation().getId(),visite.getVente().getId());
 	}
 	
 	@RequestMapping(value = "/modifierVisite", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
