@@ -89,6 +89,9 @@ monApp.config(function($routeProvider) {
 	}).when("/afficheListeContrat", {
 		templateUrl : "views/listeContratCN.html",
 		controller : "findAllContratCtrl"
+	}).when("/afficheListeAcquereurs", {
+		templateUrl : "views/listeAcquereursCN.html",
+		controller : "findAllContratCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})

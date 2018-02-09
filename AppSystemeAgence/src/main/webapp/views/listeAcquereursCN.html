@@ -1,0 +1,52 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+<h1 style="text-align: center">
+	<strong>Liste des acquereurs :</strong>
+</h1>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID Client</th>
+		<th style="text-align: center;">Nom</th>
+		<th style="text-align: center;">Numero de telephone</th>
+		<th style="text-align: center;">ID du contrat</th>
+		<th style="text-align: center;">ID du bien achete</th>
+	</tr>
+
+	<tr ng-repeat="c in listeContratVente">
+		<td>{{c.client.id}}</td>
+		<td>{{c.client.nom}}</td>
+		<td>{{c.client.telephone}}</td>
+		<td>{{c.id}}</td>
+		<td>{{c.vente.id}}</td>
+	</tr>
+
+</table>
+
+<h1 style="text-align: center">
+	<strong>Liste des locataires :</strong>
+</h1>
+
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID Client</th>
+		<th style="text-align: center;">Nom</th>
+		<th style="text-align: center;">Numero de telephone</th>
+		<th style="text-align: center;">ID du contrat</th>
+		<th style="text-align: center;">ID du bien loue</th>
+	</tr>
+
+	<tr ng-repeat="c in listeContratLocation">
+		<td>{{c.client.id}}</td>
+		<td>{{c.client.nom}}</td>
+		<td>{{c.client.telephone}}</td>
+		<td>{{c.id}}</td>
+		<td>{{c.location.id}}</td>
+	</tr>
+
+</table>
