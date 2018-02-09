@@ -4,38 +4,69 @@
 
 
 <h1 style="text-align: center">
-	<strong>Liste des clients :</strong>
+	<strong>Liste des clients et ses biens intereses :</strong>
 </h1>
-<table class="table table-bordered" style="text-align: center;">
-
-	<tr>
-		<th style="text-align: center;">ID</th>
-		<th style="text-align: center;">Nom</th>
-		<th style="text-align: center;">Telephone</th>
-		<th style="text-align: center;">Adresse Mail</th>
-		<th style="text-align: center;">Adresse</th>
-		<th style="text-align: center;">Biens interesses</th>
-		<th style="text-align: center;">Operations</th>
-	</tr>
-
-	<tr ng-repeat="c in listeClients">
-		<td>{{c.id}}</td>
-		<td>{{c.nom}}</td>
-		<td>{{c.telephone}}</td>
-		<td>{{c.mail}}</td>
-		<td>{{c.adresse}}</td>
-		<td>{{c.classesStd}}</td>
-		<td><button class="btn btn-success" ng-click="supprimerLien(c)">Supprimer</button>
-			|
-			<button class="btn btn-success" ng-click="modifierLien(c)">Modifier</button>
-		</td>
-	</tr>
-
-</table>
 
 
+<div class="row">
+	<div class="col-md-8">
+		<table class="table table-bordered" style="text-align: center;">
 
-<!-- {{listIdClass}} -->
-<!-- <br/> -->
+			<tr>
+				<th style="text-align: center;">ID</th>
+				<th style="text-align: center;">Nom</th>
+				<th style="text-align: center;">Telephone</th>
+				<th style="text-align: center;">Adresse<br/>Mail</th>
+				<th style="text-align: center;">Ville</th>
+				
+				<th style="text-align: center;">Operations</th>
+				<th>Favoris</th>
+			</tr>
 
-<!-- {{listClasseStd}} -->
+			<tr ng-repeat="c in listeClients"  style="height:50px; overflow:hidden">
+				<td>{{c.id}}</td>
+				<td>{{c.nom}}</td>
+				<td>{{c.telephone}}</td>
+				<td>{{c.mail}}</td>
+				<td>{{c.adresse.ville}}</td>
+				
+				<td><button class="btn btn-success" ng-click="supprimerLien(c)">Supprimer</button>
+					|
+					<button class="btn btn-success" ng-click="modifierLien(c)">Modifier</button>
+				</td>
+			<td><img src="assets/images/fleche.png" height="30px"/></td>	
+			</tr>
+
+		</table>
+	</div>
+
+	<div class="col-md-4">
+		<table class="table table-bordered" style="text-align: center;">
+			<tr>
+				<th style="text-align: center;">Code</th>
+				<th style="text-align: center;">Type de bien</th>
+				<th style="text-align: center;">Offre</th>
+				<th style="text-align: center;">Prix max</th>
+				<th style="text-align: center;">Superficie mini</th>
+			</tr>
+			<tr ng-repeat="l in listClasseStd" style="height:50px; overflow:hidden">
+				<td>{{l.code}}</td>
+				<td>{{l.type_bien}}</td>
+				<td>{{l.mode_offre}}</td>
+				<td>{{l.prix_max}}</td>
+				<td>{{l.sup_min}}</td>
+			</tr>
+		</table>
+
+	</div>
+</div>
+
+
+
+
+
+<br /><br />
+<p>{{listIdClass}}</p>
+<br />
+
+<p>{{listClasseStd}}</p>
