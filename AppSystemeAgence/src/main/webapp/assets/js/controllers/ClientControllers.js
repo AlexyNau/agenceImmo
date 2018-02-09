@@ -5,9 +5,7 @@ monApp
 		var client={
 				nom:''
 			}
-		
-			
-			
+	
 			$rootScope.client=$cookieStore.get('clientCookie');
 		
 			$rootScope.login=function () {
@@ -15,13 +13,10 @@ monApp
 			clientService.connexionClient($scope.username,$scope.mdp,function(callback){
 				if(callback){
 					$rootScope.client=callback;
-					$location.path("listeProprio");
+					$location.path("accueilClient");
 					console.log("Fonction login:"+$rootScope.client.nom)
 				}
-			})				
-			
-			
-			
+			})					
 		}
 		
 		console.log("Valeur nom client:"+client.nom)
@@ -369,9 +364,10 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		
 		$scope.rechercher();
 		
-		
-		
-		
-		
+
 	});
+
+
+monApp.controller("AccueilClientCtrl", function(){
 	
+})
