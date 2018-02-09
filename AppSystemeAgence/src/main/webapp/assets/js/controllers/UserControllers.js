@@ -29,7 +29,23 @@ monApp
 			geocoder1 = new google.maps.Geocoder();
 			if(!$scope.immoBien)
 				$scope.immoBien=$rootScope.bien2;
-			console.log("Bien root loyer="+$rootScope.bien2.loyer)
+			if($rootScope.idMap)
+				recupBienMap();
+			
+			function recupBienMap(){
+				console.log("RECUP BIEN MAP")
+				console.log("Bien ["+$rootScope.idMap+"]="+$rootScope.bienMap.adresse.pays)
+				//alert("rootScope bien map="+$rootScope.bienMap.loyer)
+				console.log("Bien ville="+$rootScope.bienMap.adresse.ville)
+				console.log("Bien loyer="+$rootScope.bienMap.loyer)
+				var bienMap=
+				$scope.immoBien=$rootScope.bienMap;
+				console.log("Bien immo ville="+$scope.immoBien.adresse.ville)
+				console.log("Bien immo loyer="+$scope.immoBien.loyer)
+				$rootScope.idMap=''
+				//location.path("")
+			}
+			//console.log("Bien root loyer="+$rootScope.bien2.loyer)
 			console.log("Bien scope loyer="+$scope.immoBien.loyer)
 			
 			
