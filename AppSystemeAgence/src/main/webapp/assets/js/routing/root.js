@@ -65,6 +65,12 @@ monApp.config(function($routeProvider) {
 	}).when("/listeVisite", {
 		templateUrl : "views/gestionVisiteCN.html",
 		controller : "findAllVisiteCtrl"
+	}).when("/modifierVisite", {
+		templateUrl : "views/modifVisiteCN.html",
+		controller : "visiteUpdateCtrl"
+	}).when("/supprimerVisite", {
+		templateUrl : "views/supprimeVisiteCN.html",
+		controller : "visiteDeleteCtrl"
 	}).when("/afficherLocationCN", {
 		templateUrl : "views/listeLocationCN.html",
 		controller : "findAllLocationCtrl"
