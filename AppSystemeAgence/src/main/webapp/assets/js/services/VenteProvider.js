@@ -89,6 +89,7 @@ monApp.factory("venteService", function($http) {
 		updateVente : modifVente,
 		getListe : recupListe,
 		addContrat : ajoutContrat
+		
 	}
 
 });

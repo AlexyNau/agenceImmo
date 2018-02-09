@@ -3,7 +3,39 @@ monApp
 
 
 		.controller("accueilUCtrl", function($scope,$rootScope,locationService,venteService,$location){
-			
+			// ************ Filtre*********************************************
+			$scope.loyer=1000;
+			 $scope.sup_min=0;
+			 $scope.sup_max=1000;
+			 $scope.type_bien='';
+			 $scope.garniture=true;
+			 $scope.location=true;
+			 $scope.vente=true;
+			$scope.filterLocation = function(location) {
+				console.log(location.classeStd.type_bien)
+				console.log($scope.type_bien)
+				var b=location.loyer < $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max && $scope.location;
+				
+				var b2=location.loyer < $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max && location.classeStd.type_bien==$scope.type_bien && $scope.location;
+				if($scope.type_bien=='')
+					return b;
+				else
+					return b2;
+				
+			};
+			$scope.filterVente= function(vente) {
+				console.log(vente.classeStd.type_bien)
+				console.log($scope.type_bien)
+				var b=vente.prixAchat < $scope.loyer && vente.superficie>$scope.sup_min && vente.superficie<$scope.sup_max && $scope.vente;
+				
+				var b2=vente.loyer < $scope.loyer && vente.superficie>$scope.sup_min && vente.superficie<$scope.sup_max && vente.classeStd.type_bien==$scope.type_bien && $scope.vente;
+				if($scope.type_bien=='')
+					return b;
+				else
+					return b2;
+				
+			};
+			//******************************************************************
 			// Liste de Vente
 			venteService.getListe(function(callback) {
 				$scope.listeVente = callback;

@@ -11,12 +11,15 @@
 {{test}}<br/>
 {{bien_map_bol2}}<br/>
 {{y_coord}}
-<div id="Img_appart" ng-hide="!bien_map_bol2" style="position:absolute;top:300px;left:880px;z-index:2"> <img ng-src="data:image/JPEG;base64,{{bien_map.photo}}"
+
+<div class="form-group">
+
+	<div class="col-sm-4" id="Img_appart" ng-hide="!bien_map_bol2" style="position:absolute;top:300px;left:880px;z-index:2"> <img ng-src="data:image/JPEG;base64,{{bien_map.photo}}"
 						style="width: 450px; height: auto;"> <h1 style="color:red"> </h1> </div>
 						
-<div  id="map" style="position:absolute;top:180px;width:700px;height:500px;margin-left:4%;z-index:1" ></div>
+	<div class="col-sm-4"  id="map" style="position:relative;left:50px;width:700px;height:500px;z-index:1" ></div>
 
-
+</div>
 
 <div id="infoBien" style="position:relative;top:1000px;width:700px;height:500px;margin-left:4%;background-color:white">
 	<div style="color:red">
