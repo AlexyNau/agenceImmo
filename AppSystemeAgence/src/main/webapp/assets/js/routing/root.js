@@ -29,6 +29,12 @@ monApp.config(function($routeProvider) {
 	}).when("/accueilClient", {
 		templateUrl : "views/accueilCL.html",
 		controller : "AccueilClientCtrl"
+	}).when("/contactImmoCL", {
+		templateUrl : "views/contactCL.html",
+		controller : "contactCtrl"
+	}).when("/modifCL", {
+		templateUrl : "views/modifClientCL.html",
+		controller : "updateCtrlClientCL"
 	}).when("/inscriptionClient", {
 		templateUrl : "views/inscription_client.html",
 		controller : "InscriptionClientCtrl"
