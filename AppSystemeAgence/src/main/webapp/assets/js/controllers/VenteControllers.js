@@ -35,6 +35,28 @@ monApp.controller("findAllVenteCtrl", function($scope, venteService) {
 		$scope.listeProprietaires = callback;
 	})
 
+	$scope.lat=0;
+	$scope.lng=0;
+	
+	$scope.voirCadastre = function() {
+		geocoder = new google.maps.Geocoder();
+		
+		geocoder.geocode(
+				{ 'address': $scope.venteAjout.adresse.numero
+					+" "+$scope.venteAjout.adresse.rue
+					+" "+$scope.venteAjout.adresse.ville }, 
+					function(results, status) {
+						if (status=='OK') {
+							$scope.lat=results[0].geometry.location.lat();
+							console.log("Latitude : "+$scope.lat)
+
+							$scope.lng=results[0].geometry.location.lng();
+							console.log("Longitude : "+$scope.lng)
+						}
+					})
+				}
+		
+	
 	// fonction pour soumettre la vente à ajouter
 	$scope.ajouterVente = function() {
 		// appel de la méthode du service
