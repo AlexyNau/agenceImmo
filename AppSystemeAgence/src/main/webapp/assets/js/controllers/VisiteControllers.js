@@ -76,9 +76,19 @@ monApp.controller("findAllVisiteCtrl",
 	$scope.visiteAjout = {
 		
 		date : '',
-		client : '',
-		location : '',
-		vente : ''
+		client : {
+			id : '',
+			nom : '',
+			telephone : ''
+		},
+		location : {
+			id : '',
+			loyer : ''
+		},
+		vente : {
+			id : '',
+			prixAchat : ''
+		}
 	}
 
 	// fonction pour soumettre la visite a ajouter
