@@ -52,10 +52,10 @@
 	<tr ng-repeat="l in listeLocation | filter:search">
 		<td>{{l.id}}</td>
 		<td>{{l.statut}}</td>
-		<td>{{l.numero}}</td>
-		<td>{{l.rue}}</td>
-		<td>{{l.ville}}</td>
-		<td>{{l.pays}}</td>
+		<td>{{l.adresse.numero}}</td>
+		<td>{{l.adresse.rue}}</td>
+		<td>{{l.adresse.ville}}</td>
+		<td>{{l.adresse.pays}}</td>
 		<td>{{l.datePublication}}</td>
 		<td>{{l.dateDisponibilite}}</td>
 		<td>{{l.remise}}</td>

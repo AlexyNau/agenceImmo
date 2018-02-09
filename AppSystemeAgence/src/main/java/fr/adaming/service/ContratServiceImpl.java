@@ -51,6 +51,7 @@ public class ContratServiceImpl implements IContratService {
 		contrat.setVente(null);
 		contrat.setClient(client);
 		contrat.setLocation(loc);
+		loc.setStatut("loue");
 		
 		double prixAvecRemise = (loc.getLoyer()+loc.getCharges())*(1-(loc.getRemise()/100));
 		contrat.setPrix(prixAvecRemise);

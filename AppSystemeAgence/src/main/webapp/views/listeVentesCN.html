@@ -49,10 +49,10 @@
 	<tr ng-repeat="v in listeVente | filter:search">
 		<td>{{v.id}}</td>
 		<td>{{v.statut}}</td>
-		<td>{{v.numero}}</td>
-		<td>{{v.rue}}</td>
-		<td>{{v.ville}}</td>
-		<td>{{v.pays}}</td>
+		<td>{{v.adresse.numero}}</td>
+		<td>{{v.adresse.rue}}</td>
+		<td>{{v.adresse.ville}}</td>
+		<td>{{v.adresse.pays}}</td>
 		<td>{{v.datePublication}}</td>
 		<td>{{v.dateDisponibilite}}</td>
 		<td>{{v.prixAchat}}</td>
