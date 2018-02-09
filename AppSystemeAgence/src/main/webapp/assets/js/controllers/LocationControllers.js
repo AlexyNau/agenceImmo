@@ -1,7 +1,7 @@
 //creation des controllers de mon App
 
 monApp.controller("findAllLocationCtrl", function($scope, locationService,$location) {
-	 $scope.loyer=0;
+	 $scope.loyer=1000;
 	 $scope.sup_min=0;
 	 $scope.sup_max=1000;
 	 $scope.type_bien='';
@@ -9,9 +9,9 @@ monApp.controller("findAllLocationCtrl", function($scope, locationService,$locat
 	$scope.filterRange = function(location) {
 		console.log(location.classeStd.type_bien)
 		console.log($scope.type_bien)
-		var b=location.loyer > $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max;
+		var b=location.loyer < $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max;
 		
-		var b2=location.loyer > $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max && location.classeStd.type_bien==$scope.type_bien;
+		var b2=location.loyer < $scope.loyer && location.superficie>$scope.sup_min && location.superficie<$scope.sup_max && location.classeStd.type_bien==$scope.type_bien;
 		if($scope.type_bien=='')
 			return b;
 		else
