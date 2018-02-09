@@ -223,6 +223,23 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 	};
 })
 
+.controller("updateCtrlClientCL", function($scope, clientService, $location,$rootScope) {
+	
+	// On récupère le client connecté
+	 $scope.clientModif = $rootScope.client;
+
+	// fonction pour soumettre le client a modif
+	$scope.updateClient = function() {
+		// appel de la méthode du service pour recuperer la liste du web service
+		clientService.modifClient($scope.clientModif, function(callback) {
+			if (callback == 'OK') {
+				// la redirection pour recharger la new liste
+				$location.path("accueilClient");
+			}
+		});
+	};
+})
+
 
 
 .controller("AccueilClientCtrl", function(){
