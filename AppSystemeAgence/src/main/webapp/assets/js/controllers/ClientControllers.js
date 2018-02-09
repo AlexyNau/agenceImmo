@@ -232,10 +232,11 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 
 .controller("mapCtrl", function($scope,$rootScope,locationService, clientService, $location) {
 
-		$scope.rechercheZone='france';
+		$scope.rechercheZone='France';
 		$scope.msg1="TEST";
 		$scope.msg="";
 		$rootScope.bien='';
+		$scope.bien_map_bol=false;
 		
 		// Liste de location
 		locationService.findListeLocation(function(callback) {
@@ -322,7 +323,7 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		        $scope.map.setCenter({lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()});
 		        
 		    	  $scope.map.setZoom(12);
-		    	  if($scope.rechercheZone=='france')
+		    	  if($scope.rechercheZone=='France')
 		    		  $scope.map.setZoom(5);
 		      }//fin geocoder 1
 				var taille=$scope.listeLocation.length;
@@ -332,7 +333,7 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 					$scope.j=i
 		        //geocoder2.geocode( { 'address': adresse[i]}, function(results1, status1) {
 				geocoder2.geocode(
-				{ 'address': $scope.listeLocation[i].adresse.numero+" "+$scope.listeLocation[i].adresse.numero+" "+$scope.listeLocation[i].adresse.ville }, function(results1, status1) {
+				{ 'address': $scope.listeLocation[i].adresse.numero+" "+$scope.listeLocation[i].adresse.rue+" "+$scope.listeLocation[i].adresse.ville }, function(results1, status1) {
 				
 		        	if (status1 == 'OK') {
 		        		console.log("!!!!!!!Ville Find !!!!!!!!!")
@@ -378,15 +379,21 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
   			   lat: lat,
 			   lng: lg,	
 			   id:i,
+			   icon:'http://maps.google.com/mapfiles/marker_green.png',
+			   //icon:bien.photo.base64,
 			   url:bien.adresse.pays+"/"+bien.adresse.rue,
   			   title:adresse+" / "+i,
   			   click:function(e){
   				   
   				  
-  				   $scope.affiche_bien(bien,i);
-  				   
-  				   
-  			   }
+  				   $scope.affiche_bien(bien,i); 				   
+  			   },
+			 	mouseover:function(e){
+				   
+			 		$scope.bien_map=bien
+			 		$scope.bien_map_bol=true
+			 		console.log("mouse OVER !!!!!!!!!!!!"+ $scope.bien_map_bol)
+			   }
   			})/*.addlistener('click', function() {
   	          $scope.map.setZoom(8);
   	          $scope.map.setCenter(marker.getPosition());

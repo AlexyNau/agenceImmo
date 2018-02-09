@@ -9,6 +9,10 @@
 	<input type="button" ng-click="rechercher()" value="Rechercher">
 </div>
 
+{{bien_map_bol}}
+<div ng-if="!bien_map_bol"> <img ng-src="data:image/JPEG;base64,{{bien.photo}}"
+						style="width: 250px; height: auto;"> <h1 style="color:red"> LOL </h1> </div>
+						
 <div  id="map" style="position:relative;top:50px;width:700px;height:500px;margin-left:4%" ></div>
 
 
