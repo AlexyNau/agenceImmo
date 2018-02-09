@@ -39,7 +39,7 @@ public class ClasseStd implements Serializable {
 	@OneToMany(mappedBy = "classeStd", cascade = CascadeType.ALL)
 	private List<Location> locations;
 	
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="classesStd")
 	private List<Client> clients;
 

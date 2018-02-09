@@ -50,7 +50,9 @@ public class ContratServiceImpl implements IContratService {
 		contrat.setVente(null);
 		contrat.setClient(client);
 		contrat.setLocation(loc);
-		contrat.setPrix(loc.getLoyer()+loc.getCharges());
+		
+		double prixAvecRemise = (loc.getLoyer()+loc.getCharges())*(1-(loc.getRemise()/100));
+		contrat.setPrix(prixAvecRemise);
 		
 		return contratDao.addContrat(contrat);
 	}
@@ -63,7 +65,9 @@ public class ContratServiceImpl implements IContratService {
 		contrat.setLocation(null);
 		contrat.setClient(client);
 		contrat.setVente(vente);
-		contrat.setPrix(vente.getPrixAchat());
+		
+		double prixAvecRemise = vente.getPrixAchat() * (1-(vente.getRemise()/100));
+		contrat.setPrix(prixAvecRemise);
 
 		return contratDao.addContrat(contrat);
 	}
