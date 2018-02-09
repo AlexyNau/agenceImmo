@@ -223,12 +223,27 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 	};
 })
 
-.controller("mapCtrl", function($scope,$rootScope, clientService, $location) {
+
+
+.controller("AccueilClientCtrl", function(){
+	
+})
+
+
+.controller("mapCtrl", function($scope,$rootScope,locationService, clientService, $location) {
 
 		$scope.rechercheZone='france';
 		$scope.msg1="TEST";
 		$scope.msg="";
 		$rootScope.bien='';
+		
+		// Liste de location
+		locationService.findListeLocation(function(callback) {
+			$scope.listeLocation = callback;
+		    console.log("Adresse 0 ="+$scope.listeLocation[0].adresse.pays)
+		    console.log("Adresse 0 ="+$scope.listeLocation[0].loyer)
+		});
+		
 		var adresse=["24 rue crebillon nantes",
 				"Parc des Chantiers, Boulevard Léon Bureau, 44200 Nantes",
 				"1 Quai du Cordon Bleu, 44100 Nantes",
@@ -257,13 +272,24 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 			   
 			  });
 
-	function affiche_bien(bien){
-		 alert("TEST="+bien.nom+" / "+bien.prenom);
+	     $scope.affiche_bien=function(bien,id){
+		 alert("TEST="+bien.adresse.pays+" / "+id+" /");
 		 $scope.msg="CLICK";
-		// $rootScope.bien=bien;
-		 console.log("AFFICHAGE BIEN === "+$scope.bien.prenom);
+		 $rootScope.bienMap=bien;
+		 $rootScope.idMap=id;
+
+		 console.log($scope.msg);
+		 redirection();
 		
-	}		   
+	}
+	     
+	     function redirection(){
+         	 console.log("if="+$scope.msg);
+	    	 console.log(" %%%%%%%%%%%%% REDIRECTION %%%%%%%");
+	    	 $scope.$apply(function() {
+	    		  $location.path('/afficheBien');
+	    		});
+	     }
 		
 	$scope.rechercher=function(){
 			   
@@ -299,11 +325,15 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		    	  if($scope.rechercheZone=='france')
 		    		  $scope.map.setZoom(5);
 		      }//fin geocoder 1
-				
-				for(var i=0;i<6;i++){
+				var taille=$scope.listeLocation.length;
+				console.log("************* TAILLE LISTE LOCATION "+ taille +"**********************")
+				for(var i=0;i<taille;i++){
 					console.log("i="+i)
 					$scope.j=i
-		        geocoder2.geocode( { 'address': adresse[i]}, function(results1, status1) {
+		        //geocoder2.geocode( { 'address': adresse[i]}, function(results1, status1) {
+				geocoder2.geocode(
+				{ 'address': $scope.listeLocation[i].adresse.numero+" "+$scope.listeLocation[i].adresse.numero+" "+$scope.listeLocation[i].adresse.ville }, function(results1, status1) {
+				
 		        	if (status1 == 'OK') {
 		        		console.log("!!!!!!!Ville Find !!!!!!!!!")
 	
@@ -313,9 +343,11 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		                 longitude[i] = results1[0].geometry.location.lng();
 		        		console.log("Position==="+positionRecup)
 		        		console.log("latitude["+i+"]="+latitude[i]+" / longitude["+i+"]="+longitude[i])
-		        		console.log("Adresse :"+adresse[i] +"/ ")
-		        		var bien={nom:i,prenom:adresse}
-		        		ajoutMarker(i,latitude[i],longitude[i],adresse[i-6],bien);	
+		        		
+		        		var bien=$scope.listeLocation[i-taille];
+		        		var adresse=bien.adresse.numero+" "+bien.adresse.rue+" "+bien.adresse.ville;
+		        		console.log("Adresse :"+adresse +"/ ")
+		        		ajoutMarker(i-taille,latitude[i],longitude[i],adresse,bien);	
 		        		i++
 	
 		        	}//fin if geocoder2		        	
@@ -346,12 +378,13 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
   			   lat: lat,
 			   lng: lg,	
 			   id:i,
-			   url:bien.nom+"/"+bien.prenom,
+			   url:bien.adresse.pays+"/"+bien.adresse.rue,
   			   title:adresse+" / "+i,
   			   click:function(e){
   				   
   				  
-  				   affiche_bien(bien);
+  				   $scope.affiche_bien(bien,i);
+  				   
   				   
   			   }
   			})/*.addlistener('click', function() {
@@ -364,10 +397,9 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 		
 		$scope.rechercher();
 		
-
+		
+		
+		
+		
 	});
-
-
-monApp.controller("AccueilClientCtrl", function(){
 	
-})
