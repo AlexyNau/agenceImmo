@@ -67,66 +67,117 @@ monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$
 
 	
 	
-	// appel de la méthode du service pour recuperer la liste du web service
-	clientService.findListeClient(function(callback) {
+		// appel de la méthode du service pour recuperer la liste du web service
+		clientService.findListeClient(function(callback) {
 
-		// Stocker la liste récupéré dans la variable listeProprio du scope
+		// Stocker la liste récupéré dans la variable listeClients du scope
 		$scope.listeClients = callback;
 
+		
+		
 		// List des id des classestd
 		$scope.listIdClass = [];
+		// List des classesStd
+		$scope.listClasseStd = [];
 		
-		// Pour chaque client de la liste :
 		var i =0;
-		do {
-			$scope.clientUn = $scope.listeClients[i];
-			
+		
+		angular.forEach($scope.listeClients, function(client){
 			// Récupération de la list des id des classeStd pour un id client
-			joinTableService.getIdClasseStd($scope.clientUn.id, function(callback) {
+			joinTableService.getIdClasseStd(client.id, function(callback) {
 				
 				console.log(callback);
 				if(callback){
 					$scope.listIdClass.push(callback);
 				}
 				console.log("liste des id classe :"+$scope.listIdClass);
-				
-				 if(i==6){
-
-				    	console.log("liste recu dans le if ********* :"+$scope.listIdClass);
-				    	
-						// List des classesStd
-						$scope.listClasseStd = [];
-
+	
+				if($scope.listIdClass.length==$scope.listeClients.length){
+					angular.forEach($scope.listIdClass, function(idClass){
 						// Pour chaque id de la liste des id de classeStd :
-						var j =0;
-						do {
-							$scope.idclass = $scope.listIdClass[j];
-							
-							joinTableService.getClasseStdById($scope.idclass, function(callback) {
+						
+						if(idClass!=0){
+							joinTableService.getClasseStdById(idClass, function(callback) {
 								console.log(callback);
+							
 								if(callback){
 									$scope.listClasseStd.push(callback);
 								}
-								
-								// Bug ici, la boucle fait trop de boucle
-								console.log("liste des id classeStd :"+$scope.listClasseStd);
-								
-							})
-						    j++;
-						}
-						while (j < $scope.listIdClass.length);
 
-				    }
-	
+								console.log("liste des id classeStd :"+$scope.listClasseStd);
+							
+							})
+						}else{
+							// +i sinon bug avec le ng-repeat pour des elements similaires
+							$scope.listClasseStd.push("Aucune classe "+i);
+							i++;
+						}
+					});
+				}
+				
 				
 			});
 			
-		    i++;
-		    console.log("****** i ="+i);
-		    
-		   
-		}
-		while (i < $scope.listeClients.length);
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		// Pour chaque client de la liste :
+//		var i =0;
+//		do {
+//			$scope.clientUn = $scope.listeClients[i];
+//			
+//			// Récupération de la list des id des classeStd pour un id client
+//			joinTableService.getIdClasseStd($scope.clientUn.id, function(callback) {
+//				
+//				console.log(callback);
+//				if(callback){
+//					$scope.listIdClass.push(callback);
+//				}
+//				console.log("liste des id classe :"+$scope.listIdClass);
+//				
+//				 if(i==6){
+//
+//				    	console.log("liste recu dans le if ********* :"+$scope.listIdClass);
+//				    	
+//						// List des classesStd
+//						$scope.listClasseStd = [];
+//
+//						// Pour chaque id de la liste des id de classeStd :
+//						var j =0;
+//						do {
+//							$scope.idclass = $scope.listIdClass[j];
+//							
+//							joinTableService.getClasseStdById($scope.idclass, function(callback) {
+//								console.log(callback);
+//								if(callback){
+//									$scope.listClasseStd.push(callback);
+//								}
+//								
+//								// Bug ici, la boucle fait trop de boucle
+//								console.log("liste des id classeStd :"+$scope.listClasseStd);
+//								
+//							})
+//						    j++;
+//						}
+//						while (j < $scope.listIdClass.length);
+//
+//				    }
+//	
+//				
+//			});
+//			
+//		    i++;
+//		    console.log("****** i ="+i);
+//		    
+//		   
+//		}
+//		while (i < $scope.listeClients.length);
 	
 		
 		
