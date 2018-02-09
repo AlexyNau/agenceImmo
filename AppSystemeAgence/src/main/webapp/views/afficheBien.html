@@ -22,11 +22,16 @@
 	<div class="col-sm-offset-1 col-sm-4 ">
 		<div style="position:relative;padding-left: 20px;">
 		<br/>
-		 <b>Loyer:</b> {{immoBien.loyer}} E<br/>
+		<b>Description:</b><br/>
+		 <b ng-show="{{immoBien.loyer}}">Loyer: {{immoBien.loyer}} E</b><br/>
+		 <b ng-show="{{immoBien.prixAchat}}">Prix d'achat: {{immoBien.prixAchat}} E</b><br/>
+		 <b ng-show="{{immoBien.charges}}">Charges: {{immoBien.charges}} E</b><br/>
+		 
 	 	 <b>Superficie:</b> {{immoBien.superficie}} m2<br/>
-	 	 <b>Location<br/>
+	 	 <b ng-show="{{immoBien.loyer}}">A louer.</b><br/>
+	 	 <b ng-show="{{immoBien.prixAchat}}">A vendre.</b><br/>
+	 	 
 	 	 <b>Adresse:</b> {{immoBien.adresse.numero}} / {{immoBien.adresse.rue}} / {{immoBien.adresse.ville}} / {{immoBien.adresse.pays}} <br/>
-		 <b>Description:</b>
 		 <br/>
 		 <br/>
 		 <br/>
