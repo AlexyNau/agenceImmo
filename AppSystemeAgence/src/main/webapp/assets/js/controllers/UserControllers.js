@@ -78,8 +78,9 @@ monApp
 				
 		      }
 			})
-			
-			
-	
+				
+		})
 		
-		});
+.controller("contactCtrl", function() {
+	
+})

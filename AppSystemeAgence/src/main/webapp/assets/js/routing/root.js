@@ -5,6 +5,9 @@ monApp.config(function($routeProvider) {
 	$routeProvider.when("/accueilU", {
 		templateUrl : "views/accueilU.html",
 		controller : "accueilUCtrl"
+	}).when("/contactImmo", {
+		templateUrl : "views/contactU.html",
+		controller : "contactCtrl"
 	}).when("/listeProprio", {
 		templateUrl : "views/listeProprio.html",
 		controller : "findAllCtrlProprio"
