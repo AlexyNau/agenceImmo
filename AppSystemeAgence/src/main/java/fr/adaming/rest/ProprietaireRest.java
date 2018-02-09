@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.Location;
 import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IProprietaireService;
 
@@ -28,6 +29,11 @@ public class ProprietaireRest {
 	@RequestMapping(value = "/proprietaire/{pId}", method = RequestMethod.GET, produces = "application/json")
 	public Proprietaire getProprioById(@PathVariable("pId") int id) {
 		return proprioService.getProprioById(id);
+	}
+	
+	@RequestMapping(value = "/proprietairebiens/{pId}", method = RequestMethod.GET, produces = "application/json")
+	public List<Location> getBiensProprioById(@PathVariable("pId") int id) {
+		return proprioService.getBiensProprioById(id);
 	}
 
 	@RequestMapping(value = "/addProprietaire", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")

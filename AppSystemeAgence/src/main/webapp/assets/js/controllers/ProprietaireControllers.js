@@ -46,6 +46,11 @@ $location.path("modifierProprio");
 			}
 		})
 	}
+	
+	$scope.displayBien=function(proprio){
+		$rootScope.proprietaire=proprio
+		$location.path("biensProprio")
+	}
 
 }).controller(
 		"findByIdCtrlProprio",
@@ -193,5 +198,25 @@ $location.path("modifierProprio");
 		});
 
 	};
+
+})
+
+.controller("findBienProprioCtrl", function($scope,$rootScope, proprioService, $location) {
+	 $scope.test="LOOOOOOL"	
+	 console.log("Recherche des biens du proprio :"+$rootScope.proprietaire.id)
+	  proprioService.listeLocations($rootScope.proprietaire.id, function(callback) {
+		console.log("APPEL FONCTION")
+		if (callback) {
+			console.log("CALLBACK OK")
+			console.log("Callback="+callback[0])
+			
+		 $scope.listeBienProprio=callback;
+		 $scope.test="LOOOOOOL222222"	
+			//console.log
+		}
+	});
+
+	
+	
 
 });

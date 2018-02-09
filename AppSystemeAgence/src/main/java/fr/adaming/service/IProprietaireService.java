@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.Location;
 import fr.adaming.model.Proprietaire;
 
 public interface IProprietaireService {
@@ -13,6 +14,8 @@ public interface IProprietaireService {
 	public Proprietaire addProprio(Proprietaire p);
 
 	public Proprietaire updateProprio(Proprietaire p);
+	
+	public List<Location> getBiensProprioById(int id);
 
 	public void deleteProprio(int id);
 	

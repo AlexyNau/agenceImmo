@@ -1,0 +1,39 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerConseiller.html'"></div>
+</div>
+
+
+{{msg}}
+
+
+<h1 style="text-align: center">
+		<strong>Liste des biens de {{proprietaire.nom}} :</strong>
+</h1>
+ {{listeBienProprio[0].loyer}}
+ {{test}}
+<table class="table table-bordered" style="text-align: center;">
+
+	<tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">Photo</th>
+		<th style="text-align: center;">Pays</th>
+		<th style="text-align: center;">Rue</th>
+		<th style="text-align: center;">ville</th>
+		<th style="text-align: center;">Location / Vente</th>
+		<th style="text-align: center;">Loyer / Prix Achat</th>
+		<th style="text-align: center;">Operations</th>
+	</tr>
+
+	<tr ng-repeat="b in listeBienProprio">
+		<td>{{b.id}}</td>
+		<td><img ng-src="data:image/JPEG;base64,{{b.photo}}"
+						style="width: 250px; height: auto;"></td>
+		<td>{{b.adresse.pays}}</td>
+		<td>{{b.adresse.rue}}</td>
+		<td>{{b.adresse.ville}}</td>
+		<td>Location</td>
+		<td>{{b.loyer}}</td>
+		<td> <button class="btn btn-success"  >Voir details</button>  </td>
+	</tr>
+
+</table>

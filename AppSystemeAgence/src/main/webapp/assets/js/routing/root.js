@@ -23,6 +23,9 @@ monApp.config(function($routeProvider) {
 	}).when("/rechercherProprio", {
 		templateUrl : "views/rechercheProprio.html",
 		controller : "findByIdCtrlProprio"
+	}).when("/biensProprio", {
+		templateUrl : "views/listeBienProprio.html",
+		controller : "findBienProprioCtrl"
 	}).when("/coClient", {
 		templateUrl : "views/login_client.html",
 		controller : "ConnexionClientCtrl"

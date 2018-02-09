@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import fr.adaming.model.Location;
 import fr.adaming.model.Proprietaire;
 
 public interface IProprietaireDao {
@@ -13,6 +14,8 @@ public interface IProprietaireDao {
 	public Proprietaire addProprio(Proprietaire p);
 
 	public Proprietaire updateProprio(Proprietaire p);
+	
+	public List<Location> getLocationsProprioById(int id);
 
 	public void deleteProprio(int id);
 	

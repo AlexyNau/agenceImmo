@@ -113,6 +113,27 @@ function searchProprio(id,callback) {
 		  
 	  });
 };
+
+//developpement de la fonction pour rechercher un proprietaire
+function listeLocationProprio(id,callback) {
+	console.log("recherche provider liste location d'un proprio="+id)
+	//appel du WS grace au service $Http
+	$http({
+		method:'GET',
+		url:urlWS+'proprietairebiens/'+id,
+		
+	}).then(function success(reponse) {
+		   
+		//stocker la reponse dans la callback afin de la transporter au controller
+		  callback(reponse.data);
+		  console.log("Reponse data="+reponse.data[0].loyer)
+		  
+	  }, function erreur(reponse) {
+		
+		  console.log("****erreur du serveur pour la liste: "+reponse.status+" "+reponse.statusText)
+		  
+	  });
+};
 	
 	//le retour de la fonction du service
 return {
@@ -121,7 +142,8 @@ return {
 	addProprio:ajoutProprio,
 	modifProprio:updateProprio,
 	supProprio:deleteProprio,
-	rechercheProprio:searchProprio
+	rechercheProprio:searchProprio,
+	listeLocations:listeLocationProprio
 	
 }
 

@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.Location;
 import fr.adaming.model.Proprietaire;
 
 @Repository
@@ -87,6 +88,19 @@ public class ProprietaireDaoImpl implements IProprietaireDao {
 		Proprietaire p_out = (Proprietaire) s.get(Proprietaire.class, id);
 		// Suppression du proprio avec la methode delete
 		s.delete(p_out);
+	}
+
+	@Override
+	public List<Location> getLocationsProprioById(int id) {
+		s = sf.getCurrentSession();
+		String req = "FROM Location l WHERE l.proprietaire.id=:pidp";
+
+		Query query = s.createQuery(req);
+
+		query.setParameter("pidp", id);
+
+		return query.list();
+	
 	}
 
 }
