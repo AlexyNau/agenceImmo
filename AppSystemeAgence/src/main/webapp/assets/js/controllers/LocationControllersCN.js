@@ -43,28 +43,37 @@ monApp.controller("findAllLocationCtrl", function($scope, locationServiceCN) {
 			}
 		})
 	}
-}).controller("updateLocationCNCtrl", function($scope, locationServiceCN, $location) {
-	$scope.locationModif = {
-			id:'',
-			adresse : {
-				numero : '',
-				rue : '',
-				ville : '',
-				pays : ''
+}).controller("updateLocationCNCtrl", function($scope, locationServiceCN, clientService, $location) {
+	$scope.contratAjout={
+			prix:'',
+			date:'',
+			location : {
+				id:'',
+				adresse : {
+					numero : '',
+					rue : '',
+					ville : '',
+					pays : ''
 		
-			},
-			datePublication : '',
-			dateDisponibilite : '',
-			remise : '',
-			superficie : '',
-			image:null,
-			photo:null
+				},
+				datePublication : '',
+				dateDisponibilite : '',
+				remise : '',
+				superficie : '',
+				image:null,
+				photo:null
+			}
 	}
 	
-	$scope.modifierLocation = function() {
-		locationServiceCN.updateLocation($scope.locationModif, function(callback) {
-			if (callback) {
-				// redirection vers la page d'accueil du conseiller
+	clientService.findListeClient(function(callback){
+		$scope.listeClient=callback;
+	})
+	
+	$scope.ajouterContrat = function() {
+		locationServiceCN.updateLocation($scope.contratAjout.location, function(callback) {})
+		locationServiceCN.addContrat($scope.contratAjout, function(callback) {
+			console.log($scope.contratAjout);
+			if(callback){
 				$location.path("listeProprio");
 			}
 		})

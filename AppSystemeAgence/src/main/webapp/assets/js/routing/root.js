@@ -60,7 +60,7 @@ monApp.config(function($routeProvider) {
 		templateUrl : "views/ajoutLocationCN.html",
 		controller : "addLocationCtrl"
 	}).when("/modifierLocation", {
-		templateUrl : "views/modifLocationCN.html",
+		templateUrl : "views/ajoutContratLocCN.html",
 		controller : "updateLocationCNCtrl"
 	}).when("/listeVisite", {
 		templateUrl : "views/gestionVisiteCN.html",

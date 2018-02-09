@@ -45,6 +45,26 @@ monApp.factory("locationServiceCN", function($http) {
 				});
 	};
 	
+	function ajoutContrat(contratAjout, callback) {
+		// appel du WS grâce au service $http
+		$http({
+			method : 'POST',
+			url : urlWS + 'addContratLocation',
+			data : angular.toJson(contratAjout),
+			header : {
+				'content-type' : 'application/json'
+			}
+		}).then(
+				function success(reponse) {
+					// stockage de la réponse dans le callback
+					callback(reponse.data);
+				},
+				function erreur(reponse) {
+					console.log("****erreur du serveur pour l'ajout de contrat: "
+							+ reponse.status + " " + reponse.statusText)
+				});
+	};
+	
 	function recupListe(callback){
 		$http({
 			method : 'GET', // méthode Http
@@ -65,6 +85,7 @@ return {
 		
 		addLocation : ajoutLocation,
 		updateLocation : modifLocation,
-		getListeLocations : recupListe
+		getListeLocations : recupListe,
+		addContrat : ajoutContrat
 	}
 })
