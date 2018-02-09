@@ -47,7 +47,11 @@
 
 		<label for="idTypeBien" class=" col-sm-1 "> Location:</label>
 		<div class="col-sm-1 ">
-			<input type="checkbox" ng-model="location_vente" checked>
+			<input type="checkbox" ng-model="location" checked>
+		</div>
+		<label for="idTypeBien" class=" col-sm-1 "> Vente:</label>
+		<div class="col-sm-1 ">
+			<input type="checkbox" ng-model="vente" checked>
 		</div>
 
 
@@ -58,7 +62,7 @@
 <br />
 
 <div class="form-group">
-	<div ng-repeat="lc in listeLocation">
+	<div ng-repeat="lc in listeLocation | filter:filterLocation |filter:search">
 
 		<div class="col-sm-offset-1 col-sm-3 ">
 			<div
@@ -86,7 +90,7 @@
 		<hr />
 	</div>
 
-	<div ng-repeat="lv in listeVente">
+	<div ng-repeat="lv in listeVente | filter:filterVente |filter:search">
 
 		<div class="col-sm-offset-1 col-sm-3 ">
 			<div
@@ -98,7 +102,7 @@
 				</div>
 				<div style="position: relative; padding-left: 20px;">
 					<b>Prix achat:</b> {{lv.prixAchat}} E<br /> Superficie:
-					{{lv.superficie}} m2<br /> <em>Vente</em>
+					{{lv.superficie}} m2<br /> <b>Vente</b>
 				</div>
 
 			</div>
