@@ -27,7 +27,7 @@ public class JoinTableDaoImpl implements IJoinTableDao {
 		s = sf.openSession();
 
 		// requete SQL
-		String req = "SELECT classes_clients.classe_id FROM classes_clients INNER JOIN clients ON (clients.id_client = ?)";
+		String req = "SELECT classes_clients.classe_id FROM classes_clients INNER JOIN clients ON (clients.id_client = classes_clients.client_id AND  clients.id_client =  ?)";
 
 		// création d'un querySQL
 		Query query = s.createSQLQuery(req);

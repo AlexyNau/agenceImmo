@@ -64,7 +64,10 @@ monApp.config(function($routeProvider) {
 		controller : "findAllVisiteCtrl"
 	}).when("/afficherLocationCN", {
 		templateUrl : "views/listeLocationCN.html",
-		controller : "findAllLocationCtrl"		
+		controller : "findAllLocationCtrl"
+	}).when("/afficheBien", {
+		templateUrl : "views/afficheBien.html",
+		controller : "AfficheBienCtrl"
 	}).otherwise({
 		redirectTo : "/accueilU"
 	})

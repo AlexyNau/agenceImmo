@@ -2,5 +2,98 @@
 	<div ng-include="'assets/templates/headerUser.html'"></div>
 </div>
 
-<h1>Page commune a tous les utilisateurs.</h1>
-<p>Liste des biens immo...</p>
+
+<form class="form-horizontal" style="background-color:grey;padding-top: 30px;padding-left: 20px; padding-bottom: 10px;border-radius: 25px;">
+	<div class="form-group" >
+		<label for="idTypeBien" class="col-sm-2 ">Type de bien</label>
+		<div class="col-sm-3 ">
+			<select class="form-control" id="idTypeBien"
+				ng-model="type_bien">
+				<option value="appartement" id="idAppart">Appartement</option>
+				<option value="studio" id="idStudio">Studio</option>
+				<option value="maison" id="idMaison">Maison</option>
+				<option value="entrepot" id="idEntrepot">Entrepot</option>
+				<option value="emplacement" id="idEmplacement">Emplacement</option>
+				<option value="terrain" id="idTerrain">Terrain</option>
+			</select>
+		</div>
+	
+		
+		<label for="idTypeBien" class=" col-sm-2 col-sm-offset-1 ">Loyer Max (euros):</label>
+		<div class="col-sm-2 ">
+			<input type="number" ng-model="loyer">
+		</div>
+
+
+		<label for="idTypeBien" class="col-sm-offset-6 col-sm-2 ">Superficie max desire:</label>
+		<div class="col-sm-3 ">
+			<input type="number" ng-model="sup_max">
+		</div>
+		<br/>
+		<label for="idTypeBien" class=" col-sm-2 "> Meuble (cochez si oui):</label>
+		<div class="col-sm-3 ">
+			<input type="checkbox" ng-model="garniture" checked>	
+		</div>
+	
+		<label for="idTypeBien" class="col-sm-offset-1 col-sm-2 " >Superficie min desire:</label>
+		<div class="col-sm-2 ">
+			<input type="number" ng-model="sup_min">
+		</div>
+		
+		<div class="col-sm-offset-1 col-sm-2"></div>
+		
+		<label for="idTypeBien" class=" col-sm-1 "> Location:</label>
+		<div class="col-sm-1 ">
+			<input type="checkbox" ng-model="location_vente" checked>	
+		</div>
+
+	
+		
+		</div>
+</form>
+
+<br/>
+
+<div class="form-group" >
+<div  ng-repeat="lc in listeLocation" >
+
+	<div class="col-sm-offset-1 col-sm-3 ">
+	<div  style="position:relative;right:100px;height:300px;width:300px;border-style: solid;border-width:1px;border-color:black;background-color:rgba(215,215,215,0.8)">
+	<br/>
+	<div style="text-align:center;height:160px"><img ng-src="data:image/JPEG;base64,{{lc.photo}}"
+					style=" width:250px;height: auto;" ng-click="affiche_bien(lc)"></div>
+	<div style="position:relative;padding-left: 20px;">
+	<br/>
+	  Loyer: {{lc.loyer}} E<br/>
+	  Superficie: {{lc.superficie}} m2<br/>
+	  Location<br/>
+	  Adresse:{{lc.adresse.pays}} / {{lc.adresse.rue}}<br/>
+	</div>
+	
+	</div>
+	<br/>
+	</div>
+
+</div>
+
+
+<div class="col-sm-12"> <br/> </div>
+
+	<div  ng-repeat="lv in listeVente">
+
+		<div class="col-sm-offset-1 col-sm-3 " style="position:relative;right:50px;height:300px;width:300px;border-style: solid;border-width:1px;border-color:grey;background-color:rgba(215,215,215,0.8)">
+		<br/>
+		<img ng-src="data:image/JPEG;base64,{{lv.photo}}"
+					style=" width: 250px;height: auto;">
+		<div>
+		  	Prix achat: {{lv.prixAchat}} E<br/>
+	 		 Superficie: {{lv.superficie}} m2<br/>
+	 		 <em>Vente</em>
+		</div>
+	
+	</div>
+
+	</div>
+
+</div>
+

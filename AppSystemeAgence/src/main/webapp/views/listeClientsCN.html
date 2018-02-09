@@ -4,8 +4,8 @@
 
 
 <h1 style="text-align: center">
-		<strong>Liste des clients :</strong>
-	</h1>
+	<strong>Liste des clients :</strong>
+</h1>
 <table class="table table-bordered" style="text-align: center;">
 
 	<tr>
@@ -25,7 +25,17 @@
 		<td>{{c.mail}}</td>
 		<td>{{c.adresse}}</td>
 		<td>{{c.classesStd}}</td>
-		<td><button class="btn btn-success" ng-click="supprimerLien(c)" >Supprimer</button> | <button class="btn btn-success" ng-click="modifierLien(c)" >Modifier</button> </td>
+		<td><button class="btn btn-success" ng-click="supprimerLien(c)">Supprimer</button>
+			|
+			<button class="btn btn-success" ng-click="modifierLien(c)">Modifier</button>
+		</td>
 	</tr>
 
 </table>
+
+
+
+{{listIdClass}}
+<br/>
+
+{{listClasseStd}}

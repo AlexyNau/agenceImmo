@@ -1,0 +1,40 @@
+<div ng-show=true>
+	<div ng-include="'assets/templates/headerUser.html'"></div>
+</div>
+
+<h1> Detail Bien</h1>
+
+<br/>
+<br/>
+
+<div class="form-group"  >
+
+	<div class="col-sm-12"  style="border-style: solid;border-width:1px;border-color:black;background-color:rgba(215,215,215,0.8);padding-top:10px;padding-bottom:10px">
+
+	<div class="col-sm-offset-1 col-sm-2 ">
+		<div  style="position:relative;right:100px;height:300px;width:300px">
+		<br/>
+		<div style="text-align:center;height:160px"><img ng-src="data:image/JPEG;base64,{{immoBien.photo}}"
+					style=" width:350px;height: auto;"></div>
+		</div>
+		
+	</div>
+	<div class="col-sm-offset-1 col-sm-4 ">
+		<div style="position:relative;padding-left: 20px;">
+		<br/>
+		 <b>Loyer:</b> {{immoBien.loyer}} E<br/>
+	 	 <b>Superficie:</b> {{immoBien.superficie}} m2<br/>
+	 	 <b>Location<br/>
+	 	 <b>Adresse:</b> {{immoBien.adresse.numero}} / rue {{immoBien.adresse.rue}} / {{immoBien.adresse.ville}} / {{immoBien.adresse.pays}} <br/>
+		 <b>Description:</b>
+		</div>
+		<br/>
+	</div>
+	
+	
+	<div class=" col-sm-3 ">
+	<div id="map_bien" style="position:relative;width:350px;height:300px"></div>
+	</div>
+
+</div>
+</div>

@@ -70,19 +70,77 @@ monApp
 	
 monApp.controller("findAllCtrlClient",function($scope,clientService,$rootScope,$location,joinTableService) {
 
+	
+	
 	// appel de la méthode du service pour recuperer la liste du web service
 	clientService.findListeClient(function(callback) {
 
 		// Stocker la liste récupéré dans la variable listeProprio du scope
 		$scope.listeClients = callback;
 
+		// List des id des classestd
+		$scope.listIdClass = [];
+		
+		// Pour chaque client de la liste :
+		var i =0;
+		do {
+			$scope.clientUn = $scope.listeClients[i];
+			
+			// Récupération de la list des id des classeStd pour un id client
+			joinTableService.getIdClasseStd($scope.clientUn.id, function(callback) {
+				
+				console.log(callback);
+				if(callback){
+					$scope.listIdClass.push(callback);
+				}
+				console.log("liste des id classe :"+$scope.listIdClass);
+				
+				 if(i==6){
+
+				    	console.log("liste recu dans le if ********* :"+$scope.listIdClass);
+				    	
+						// List des classesStd
+						$scope.listClasseStd = [];
+
+						// Pour chaque id de la liste des id de classeStd :
+						var j =0;
+						do {
+							$scope.idclass = $scope.listIdClass[j];
+							
+							joinTableService.getClasseStdById($scope.idclass, function(callback) {
+								console.log(callback);
+								if(callback){
+									$scope.listClasseStd.push(callback);
+								}
+								
+								// Bug ici, la boucle fait trop de boucle
+								console.log("liste des id classeStd :"+$scope.listClasseStd);
+								
+							})
+						    j++;
+						}
+						while (j < $scope.listIdClass.length);
+
+				    }
+	
+				
+			});
+			
+		    i++;
+		    console.log("****** i ="+i);
+		    
+		   
+		}
+		while (i < $scope.listeClients.length);
+	
+		
+		
+		
+		
+		
 	});
 	
-	// Récupération de la list des id des classeStd pour un id client
-	joinTableService.getIdClasseStd('2', function(callback) {
-		$scope.listIdClasse = callback;
-		console.log("liste des id classe :"+$scope.listIdClasse);
-	});
+	
 	
 
 	// fonction pour modifier grace au lien du tableau
