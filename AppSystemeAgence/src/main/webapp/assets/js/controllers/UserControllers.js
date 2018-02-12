@@ -5,6 +5,7 @@ monApp
 		.controller("accueilUCtrl", function($scope,$rootScope,locationService,venteService,$location){
 			// ************ Filtre*********************************************
 			$scope.loyer=1000;
+			$scope.prix=1000000;
 			 $scope.sup_min=0;
 			 $scope.sup_max=1000;
 			 $scope.type_bien='';
@@ -26,7 +27,7 @@ monApp
 			$scope.filterVente= function(vente) {
 				console.log(vente.classeStd.type_bien)
 				console.log($scope.type_bien)
-				var b=vente.prixAchat < $scope.loyer && vente.superficie>$scope.sup_min && vente.superficie<$scope.sup_max && $scope.vente;
+				var b=vente.prixAchat < $scope.prix && vente.superficie>$scope.sup_min && vente.superficie<$scope.sup_max && $scope.vente;
 				
 				var b2=vente.loyer < $scope.loyer && vente.superficie>$scope.sup_min && vente.superficie<$scope.sup_max && vente.classeStd.type_bien==$scope.type_bien && $scope.vente;
 				if($scope.type_bien=='')
